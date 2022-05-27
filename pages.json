@@ -19,7 +19,7 @@
             "path" : "pages/history/history",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "历史记录",
                 "enablePullDownRefresh": false
             }
             

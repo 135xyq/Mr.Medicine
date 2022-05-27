@@ -136,7 +136,9 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+//
+//
 //
 //
 //
@@ -149,13 +151,23 @@ var _default =
 {
   data: function data() {
     return {
-      title: 'Hello Mr. Medicine' };
+      src: "" };
 
   },
-  onLoad: function onLoad() {
+  methods: {
+    takePhoto: function takePhoto() {var _this = this;
+      var ctx = uni.createCameraContext();
+      ctx.takePhoto({
+        quality: 'high',
+        success: function success(res) {
+          _this.src = res.tempImagePath;
+        } });
 
-  },
-  methods: {} };exports.default = _default;
+    },
+    error: function error(e) {
+      console.log(e.detail);
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 /* 18 */
