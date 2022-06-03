@@ -1,1 +1,1 @@
-<view>个人中心</view>
+<view><view class="header"><image class="user-avatar" src="{{avatar}}" mode="{{scaleToFill}}"></image></view><button type="default" data-event-opts="{{[['tap',[['wxLogin',['$event']]]]]}}" bindtap="__e">登录获取</button></view>

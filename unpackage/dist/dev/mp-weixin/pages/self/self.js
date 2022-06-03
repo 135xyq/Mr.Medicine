@@ -128,19 +128,85 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 26));
+
+
+
+
+
+
+
+
+
+
+var _default_avatar = _interopRequireDefault(__webpack_require__(/*! ../../static/img/default_avatar.jpg */ 37));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var _default =
 {
   data: function data() {
-    return {};
+    return {
+      avatar: _default_avatar.default, //头像
+      a: '1' };
+
+  },
+  methods: {
+    getCode: function getCode() {
+      return new Promise(function (resolve, reject) {
+        uni.login({
+          provider: "weixin",
+          success: function success(e) {
+            resolve(e);
+          },
+          fail: function fail(err) {
+            reject(new Error("获取code失败"));
+          } });
+
+      });
+    },
+    wxLogin: function wxLogin() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var _yield$_this$getCode, code;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
 
 
-  } };exports.default = _default;
+                  _this.getCode());case 2:_yield$_this$getCode = _context.sent;code = _yield$_this$getCode.code;
+                wx.showModal({
+                  title: '温馨提示',
+                  content: '授权微信登录后才能正常使用小程序功能',
+                  success: function success(res) {
+                    //如果用户点击了确定按钮
+                    if (res.confirm) {
+                      wx.getUserProfile({
+                        desc: '获取你的昵称、头像、地区及性别',
+                        success: function success(res) {
+                          res.rawData = JSON.parse(res.rawData); //将字符串转为对象
+                          _this.avatar = res.rawData.avatarUrl; //登录成功给出新的头像
+                        },
+                        fail: function fail(res) {
+                          console.log(res);
+                          //拒绝授权
+                          wx.showToast({
+                            title: '您拒绝了请求,不能正常使用小程序',
+                            icon: 'error',
+                            duration: 2000 });
+
+                          return;
+                        } });
+
+                    } else if (res.cancel) {
+                      //如果用户点击了取消按钮
+                      wx.showToast({
+                        title: '您拒绝了请求,不能正常使用小程序',
+                        icon: 'error',
+                        duration: 2000 });
+
+                      return;
+                    }
+                  } });
+
+                uni.request({
+                  url: "https://api.weixin.qq.com/sns/jscode2session?appid=wxf600daae2dc114e6&secret=1dd92382dbe76240929007795b89005e&js_code=".concat(code, "&grant_type=authorization_code"),
+                  method: "GET" }).
+                then(function (res) {
+                  console.log(res);
+                });case 6:case "end":return _context.stop();}}}, _callee);}))();
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ })
 
