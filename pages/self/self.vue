@@ -171,7 +171,6 @@
 
 <style>
 	@import "@/static/iconfont.css";
-
 	.wx-login {
 		width: 100%;
 		position: relative;

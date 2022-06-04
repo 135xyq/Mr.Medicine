@@ -3571,9 +3571,9 @@ module.exports = g;
         "127.0.0.1",
         "172.17.41.166"
     ],
-    "debugPort": 12590,
+    "debugPort": 5986,
     "initialLaunchType": "local",
-    "servePort": 12591,
+    "servePort": 5987,
     "skipFiles": [
         "<node_internals>/**/*.js",
         "D:/app/HBuilderX/plugins/unicloud/**/*.js"
@@ -10925,7 +10925,7 @@ function resolveLocaleChain(locale) {
 
 /***/ }),
 
-/***/ 67:
+/***/ 76:
 /*!****************************************************************************************!*\
   !*** D:/学习/课程学习/软件项目开发/MrMedicine/uni_modules/uni-icons/components/uni-icons/icons.js ***!
   \****************************************************************************************/

@@ -1,0 +1,62 @@
+.feedback-title {
+    margin: 30rpx;
+    margin-bottom: 0;
+    font-size: 28rpx;
+    color: #666;
+}
+
+.feedback-content {
+    margin: 30rpx;
+    padding: 20rpx;
+    box-sizing: border-box;
+    border: 1px solid #eee;
+    .feedback-textarea {
+        font-size: 24rpx;
+        width: 100%;
+        height: 200rpx;
+    }
+}
+
+.feedback-image-box {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20rpx;
+    .feedback-image-item {
+        position: relative;
+        width: 33.33%;
+        height: 0;
+        padding-top: 33.33%;
+        box-sizing: border-box;
+        .close-icon {
+            @include flex(center);
+            right: 0;
+            top: 0;
+            width: 44rpx;
+            height: 44rpx;
+            position: absolute;
+            border-radius: 50%;
+            z-index: 2;
+            background-color: red;
+        }
+        .image-box {
+            @include flex(center);
+            top: 10rpx;
+            right: 10rpx;
+            bottom: 10rpx;
+            left: 10rpx;
+            border: 1px solid #eee;
+            border-radius: 10rpx;
+            overflow: hidden;
+            position: absolute;
+            image {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}
+
+.feedback-button {
+    margin: 0 30rpx;
+    background-color: red;
+}
