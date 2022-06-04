@@ -4,10 +4,37 @@
 		<view class="wx-login" v-if="!userLogin">
 			<image :src="userInfo.avatar" class="unlogin-user-avatar"></image>
 			<button type="primary" @click="wxLogin" class="login-button">微信登录</button>
-			
+
 		</view>
-		<!-- 显示用户头像 -->
-		<view class="header">
+		<!-- 登录完成 -->
+		<view class="wx-logined" v-if="userLogin">
+			<!-- 头部个人信息 -->
+			<view class="header">
+				<uni-row class="header-info">
+					<uni-col :span="7" class="user-item">
+						<image :src="userInfo.avatar" class="login-user-avatar" mode="aspectFit"></image>
+					</uni-col>
+					<uni-col :span="12" class="user-item">
+						<view class="nick-name">
+							{{userInfo.nickName}}
+						</view>
+					</uni-col>
+				</uni-row>
+			</view>
+			<view class="content">
+				<!-- 历史记录 -->
+				<view class="history item" @click="onHandleToHistory">
+					<uni-icons custom-prefix="iconfont" type="icon-lishi" size="25"></uni-icons>
+					<view class="select-item">历史记录</view>
+					<uni-icons type="forward" color="#939188" size="20" class="load-to-page"></uni-icons>
+				</view>
+				<!-- 问题反馈 -->
+				<view class="chat item" @click="onHandleToFeedback">
+					<uni-icons custom-prefix="iconfont" type="icon-fankui" size="25"></uni-icons>
+					<view class="select-item chat-item">问题反馈</view>
+					<uni-icons type="forward" color="#939188" size="20" class="load-to-page"></uni-icons>
+				</view>
+			</view>
 		</view>
 	</view>
 </template>
@@ -33,7 +60,6 @@
 				this.userInfo.nickName = this.$store.state.userInfo.userInfo.nickName;
 				this.userInfo.avatar = this.$store.state.userInfo.userInfo.avatarUrl;
 				this.userInfo.openid = this.$store.state.userInfo.userInfo.openid;
-				console.log(this.userInfo)
 			}
 
 		},
@@ -75,6 +101,11 @@
 											})
 										},
 										success: (res) => {
+											uni.showToast({
+												title: '登录成功',
+												icon: 'success',
+												duration: 2000
+											});
 											// 修改仓库的用户信息
 											this.$store.dispatch(
 												"userInfo/updateUserInfo", res
@@ -83,15 +114,18 @@
 											this.userLogin = true;
 											// 获取用户信息
 											// 获取登录用户信息
-											this.userInfo.nickName = this.$store.state.userInfo.userInfo.nickName;
-											this.userInfo.avatar = this.$store.state.userInfo.userInfo.avatarUrl;
-											this.userInfo.openid = this.$store.state.userInfo.userInfo.openid;
+											this.userInfo.nickName = this.$store
+												.state.userInfo.userInfo.nickName;
+											this.userInfo.avatar = this.$store
+												.state.userInfo.userInfo.avatarUrl;
+											this.userInfo.openid = this.$store
+												.state.userInfo.userInfo.openid;
 										}
 									})
 									this.avatar = res.rawData.avatarUrl; //登录成功给出新的头像
 								},
 								fail: res => {
-									console.log(res);
+									// console.log(res);
 									//拒绝授权
 									uni.showToast({
 										title: '拒绝授权',
@@ -118,18 +152,32 @@
 				}).then(res => {
 					this.openId = res[1].data.openid
 				})
+			},
+			// 跳转到历史记录
+			onHandleToHistory() {
+				uni.navigateTo({
+					url: '/pages/hsitoryPage/hsitoryPage',
+				})
+			},
+			// 跳转到问题反馈
+			onHandleToFeedback(){
+				uni.navigateTo({
+					url: '/pages/feedback/feedback',
+				})
 			}
-			,
 		}
 	}
 </script>
 
 <style>
-	.wx-login{
-		width:100%;
+	@import "@/static/iconfont.css";
+
+	.wx-login {
+		width: 100%;
 		position: relative;
 	}
-	.unlogin-user-avatar{
+
+	.unlogin-user-avatar {
 		width: 300rpx;
 		height: 300rpx;
 		border-radius: 50%;
@@ -137,12 +185,70 @@
 		top: 30rpx;
 		left: calc(50% - 150rpx);
 	}
-	.login-button{
-		width:70vw;
+
+	.login-button {
+		width: 70vw;
 		font-size: 20px;
 		position: absolute;
 		top: 400rpx;
 		left: 50%;
 		transform: translateX(-50%);
+	}
+
+	.wx-logined {
+		width: 100%;
+	}
+
+	.header {
+		height: 150rpx;
+		margin: 20px 20px;
+	}
+
+	.header-info {
+		display: block;
+		width: 100%;
+		height: 150rpx;
+	}
+
+	.login-user-avatar {
+		width: 150rpx;
+		height: 150rpx;
+		border-radius: 10%;
+	}
+
+	.nick-name {
+		line-height: 150rpx;
+	}
+
+	.content {
+		margin-top: 30px;
+		/* padding-left: 20px; */
+	}
+
+	.item {
+		height: 100rpx;
+		line-height: 100rpx;
+		width: 100%;
+		position: relative;
+		padding-left: 20px;
+	}
+
+
+	.select-item {
+		height: 100%;
+		margin-left: 30rpx;
+		width: 88%;
+		border-top: 1px solid #dfdfdf;
+		display: inline-block;
+	}
+
+	.chat-item {
+		border-bottom: 1px solid #dfdfdf;
+	}
+
+	.load-to-page {
+		position: absolute;
+		top: 0rpx;
+		right: 50rpx;
 	}
 </style>
