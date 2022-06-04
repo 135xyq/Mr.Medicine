@@ -1,0 +1,23 @@
+
+.wx-login{
+	width:100%;
+	position: relative;
+}
+.unlogin-user-avatar{
+	width: 300rpx;
+	height: 300rpx;
+	border-radius: 50%;
+	position: absolute;
+	top: 30rpx;
+	left: calc(50% - 150rpx);
+}
+.login-button{
+	width:70vw;
+	font-size: 20px;
+	position: absolute;
+	top: 400rpx;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	        transform: translateX(-50%);
+}
+

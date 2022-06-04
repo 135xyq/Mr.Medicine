@@ -1,0 +1,12 @@
+// 本文件中的json内容将在云函数【运行】时作为参数传给云函数。
+// 配置教程参考：https://uniapp.dcloud.net.cn/uniCloud/quickstart?id=runparam
+{
+    "nickName": "󠀀谢永强",
+    "gender": 0,
+    "language": "zh_CN",
+    "city": "",
+    "province": "",
+    "country": "",
+    "avatarUrl": "https://thirdwx.qlogo.cn/mmopen/vi_32/iaA3kiaYK2wOIwmQhWZkCDXDcdnOicVXcEbE5vHFdicM3qqiaxWibiagxTaogDukFibQL5DzAicmRaSFKQ8qibuZcACByib1Q/132",
+    "openid": "oB5r_5VDWeF8hunHPnci8NQj3uUQ"
+}

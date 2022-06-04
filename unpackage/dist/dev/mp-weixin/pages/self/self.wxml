@@ -1,1 +1,1 @@
-<view><view class="header"><image class="user-avatar" src="{{avatar}}" mode="{{scaleToFill}}"></image></view><button type="default" data-event-opts="{{[['tap',[['wxLogin',['$event']]]]]}}" bindtap="__e">登录获取</button></view>
+<view><block wx:if="{{!userLogin}}"><view class="wx-login"><image class="unlogin-user-avatar" src="{{userInfo.avatar}}"></image><button class="login-button" type="primary" data-event-opts="{{[['tap',[['wxLogin',['$event']]]]]}}" bindtap="__e">微信登录</button></view></block><view class="header"></view></view>
