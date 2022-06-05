@@ -1,0 +1,33 @@
+// 本文件中的json内容将在云函数【运行】时作为参数传给云函数。
+// 配置教程参考：https://uniapp.dcloud.net.cn/uniCloud/quickstart?id=runparam
+{	"user_openid":"oB5r_5VDWeF8hunHPnci8NQj3uUQ",
+	"createDate":"2022-06-05",
+	"is_overdue":false,//是否过期
+	"pearRecord":[{
+		drugName:"test1",//药名
+		drugAvatar:"https://thirdwx.qlogo.cn/mmopen/vi_32/iaA3kiaYK2wOIwmQhWZkCDXDcdnOicVXcEbE5vHFdicM3qqiaxWibiagxTaogDukFibQL5DzAicmRaSFKQ8qibuZcACByib1Q/132"
+		pearCount:"3粒",//每次吃多少粒
+		allCount:"44盒",//总共多少盒
+		dayEat:3//一日几次
+	},{
+		drugName:"test2",//药名
+		drugAvatar:"https://thirdwx.qlogo.cn/mmopen/vi_32/iaA3kiaYK2wOIwmQhWZkCDXDcdnOicVXcEbE5vHFdicM3qqiaxWibiagxTaogDukFibQL5DzAicmRaSFKQ8qibuZcACByib1Q/132"
+		pearCount:"2粒",//每次吃多少粒
+		allCount:"3瓶",//总共多少盒
+		dayEat:2//一日几次
+	},{
+		drugName:"test3",//药名
+		drugAvatar:"https://thirdwx.qlogo.cn/mmopen/vi_32/iaA3kiaYK2wOIwmQhWZkCDXDcdnOicVXcEbE5vHFdicM3qqiaxWibiagxTaogDukFibQL5DzAicmRaSFKQ8qibuZcACByib1Q/132"
+		pearCount:"2粒",//每次吃多少粒
+		allCount:"3盒",//总共多少盒
+		dayEat:2//一日几次
+	},{
+		drugName:"test4",//药名
+		drugAvatar:"https://thirdwx.qlogo.cn/mmopen/vi_32/iaA3kiaYK2wOIwmQhWZkCDXDcdnOicVXcEbE5vHFdicM3qqiaxWibiagxTaogDukFibQL5DzAicmRaSFKQ8qibuZcACByib1Q/132"
+		pearCount:"5袋",//每次吃多少粒
+		allCount:"3盒",//总共多少盒
+		dayEat:3//一日几次
+	}]
+	
+	
+}

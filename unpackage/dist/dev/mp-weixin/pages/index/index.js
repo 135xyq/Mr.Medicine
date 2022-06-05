@@ -130,11 +130,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
 //
 //
 //
@@ -148,20 +144,7 @@ var _default =
       src: "" };
 
   },
-  methods: {
-    takePhoto: function takePhoto() {var _this = this;
-      var ctx = uni.createCameraContext();
-      ctx.takePhoto({
-        quality: 'high',
-        success: function success(res) {
-          _this.src = res.tempImagePath;
-        } });
-
-    },
-    error: function error(e) {
-      console.log(e.detail);
-    } } };exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+  methods: {} };exports.default = _default;
 
 /***/ }),
 
