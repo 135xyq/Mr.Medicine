@@ -19,13 +19,13 @@
 		<view class="drug-pear-count item">
 			<text class="label">每日剂量：</text>
 			<picker class="select" @change="onHandleDrugpearChange" mode=multiSelector :range="drugPearCountRange">
-				{{drugPearCountRange[0][drugPearCountIndex1]}}{{drugPearCountRange[1][drugPearCountIndex2]}}
+				{{drugPearCount.count}}{{drugPearCount.unit}}
 			</picker>
 		</view>
 		<view class="drug-all-count item">
 			<text class="label">总药品量：</text>
 			<picker class="select" @change="onHandleDrugAllChange" mode=multiSelector :range="drugAllCountRange">
-				{{drugAllCountRange[0][drugAllCountIndex1]}}{{drugAllCountRange[1][drugAllCountIndex2]}}{{drugAllCountRange[2][drugAllCountIndex3]}}{{drugAllCountRange[3][drugAllCountIndex4]}}
+				{{drugAllCount.count}}{{drugAllCount.unit}}{{drugAllCount.pearCount}}{{drugAllCount.pearUnit}}
 			</picker>
 		</view>
 		<view class="drug-day-eat-cout item">
@@ -41,20 +41,23 @@
 <script>
 	export default {
 		name: "RecordCard",
+		props:{
+			parentData:{}
+		},
 		data() {
 			return {
-				drugName: '', //药品名称
-				drugAvatar: '', //药品图片
-				drugPearCount: {
+				drugName:this.parentData.drugName||'', //药品名称
+				drugAvatar: this.parentData.drugAvatar||'', //药品图片
+				drugPearCount: this.parentData.pearCount || {
 					count: '',
 					unit: ''
 				}, //药品剂量
-				drugDayEatCount: '', //一日几次
-				drugAllCount: {
+				drugDayEatCount:this.parentData.drugDayEatCount || '', //一日几次
+				drugAllCount: this.parentData.allCount || {
 					count: '',
 					unit: '',
 					pearCount: '', //没和多少粒，
-					pearCount: '' //单位
+					pearUnit: '' //单位
 				}, //药品总量
 				drugPearCountRange: [
 					["请选择剂量", 0.5, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
@@ -68,7 +71,7 @@
 					["每盒/瓶容量", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24,
 						25, 26, 27, 28, 29, 30, 31
 					],
-					["每盒/瓶容量单位", '粒', '袋', , '剂', '片', '支', ]
+					["每盒/瓶容量单位", '粒', '袋', '剂', '片', '支', ]
 				],
 				drugAllCountIndex1: 1,
 				drugAllCountIndex2: 1,
@@ -77,26 +80,27 @@
 				drugDayEatRange: ["请选择每日服用次数", 1, 2, 3],
 				drugDayEatIndex: 3,
 				drugDayEatRange1: ['早', "早/晚", "早/中/晚"],
-				tempImg: '', //临时地址
+				tempImg:this.parentData.drugAvatar || '', //临时地址
 			};
 		},
 		created() {
 			// 初始化每日剂量
-			this.drugPearCount.count = this.drugPearCountRange[0][this.drugPearCountIndex1];
-			this.drugPearCount.unit = this.drugPearCountRange[1][this.drugPearCountIndex2];
+			this.drugPearCount.count = this.parentData.pearCount ? this.parentData.pearCount.count : this.drugPearCountRange[0][this.drugPearCountIndex1];
+			this.drugPearCount.unit = this.parentData.pearCount ? this.parentData.pearCount.unit :this.drugPearCountRange[1][this.drugPearCountIndex2];
 			// 初始化总数
-			this.drugAllCount.count = this.drugAllCountRange[0][this.drugAllCountIndex1];
-			this.drugAllCount.unit = this.drugAllCountRange[1][this.drugAllCountIndex2];
-			this.drugAllCount.pearCount = this.drugAllCountRange[2][this.drugAllCountIndex3];
-			this.drugAllCount.pearUnit = this.drugAllCountRange[3][this.drugAllCountIndex4];
+			this.drugAllCount.count = this.parentData.allCount ?this.parentData.allCount.count : this.drugAllCountRange[0][this.drugAllCountIndex1];
+			this.drugAllCount.unit = this.parentData.allCount ?this.parentData.allCount.unit : this.drugAllCountRange[1][this.drugAllCountIndex2];
+			this.drugAllCount.pearCount = this.parentData.allCount ?this.parentData.allCount.pearCount :  this.drugAllCountRange[2][this.drugAllCountIndex3];
+			this.drugAllCount.pearUnit = this.parentData.allCount ?this.parentData.allCount.pearUnit : this.drugAllCountRange[3][this.drugAllCountIndex4];
 			// 一天吃几次
-			this.drugDayEatCount = this.drugDayEatRange[this.drugDayEatIndex];
-		},
+			this.drugDayEatCount = this.parentData.drugDayEatCount || this.drugDayEatRange[this.drugDayEatIndex];
+			this.drugDayEatIndex = this.drugDayEatCount;
+		},	
 		methods: {
 			// 修改药品剂量
 			onHandleDrugpearChange(e) {
 				// 选中提示信息
-				if (e.detail.value[0] === 0 || e.detail.value[1] === 0) {
+				if (e.detail.value[0] == 0 || e.detail.value[1] == 0) {
 					return;
 				}
 				this.drugPearCountIndex1 = e.detail.value[0];
@@ -107,7 +111,8 @@
 			// 修改总量
 			onHandleDrugAllChange(e) {
 				// 选中提示信息
-				if (e.detail.value[0] === 0 || e.detail.value[1] === 0 || e.detail.value[2] === 0 || e.detail.value[3] ===
+				// console.log(e.detail.value)
+				if (e.detail.value[0] == 0 || e.detail.value[1] == 0 || e.detail.value[2] == 0 || e.detail.value[3] ==
 					0) {
 					return;
 				}
@@ -122,8 +127,9 @@
 			},
 			// 修改日服药次数
 			onHandleDrugDayEatChange(e) {
+				// console.log(121,e.detail.value)
 				// 选中提示信息
-				if (e.detail.value === 0) {
+				if (e.detail.value == 0) {
 					return;
 				}
 				this.drugDayEatIndex = e.detail.value;
