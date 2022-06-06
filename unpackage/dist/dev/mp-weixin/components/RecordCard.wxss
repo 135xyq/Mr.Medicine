@@ -37,6 +37,9 @@
   text-indent: 10px;
   border-radius: 5px;
 }
+.record-crad-container .drug-name-input.data-v-5a2773c8 {
+  text-indent: 0.5em;
+}
 .record-crad-container .drug-name.data-v-5a2773c8 {
   padding-top: 10px;
 }
@@ -44,18 +47,19 @@
   height: 100px;
 }
 .record-crad-container .close-icon.data-v-5a2773c8 {
-  width: 44rpx;
-  height: 44rpx;
+  width: 40rpx;
+  height: 40rpx;
   position: absolute;
   border-radius: 50%;
   z-index: 2;
-  right: -10px;
-  top: -10px;
-  background-color: red;
+  right: -6px;
+  top: -6px;
+  background-color: #ccc;
 }
 .record-crad-container .close-icon .icon.data-v-5a2773c8 {
   position: absolute;
   top: -40px;
+  height: 0px;
   right: 2px;
 }
 

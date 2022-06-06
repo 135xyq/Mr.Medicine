@@ -1,5 +1,18 @@
-
-.test{
-	width: 100%;
+.test.data-v-57280228 {
+  width: 100%;
+}
+.scroll-view.data-v-57280228,
+.scroll-view-box.data-v-57280228 {
+  height: 100%;
+}
+.scroll-view .buttons.data-v-57280228,
+.scroll-view-box .buttons.data-v-57280228 {
+  width: 100%;
+  text-align: center;
+  margin: 30px 0;
+}
+.scroll-view .buttons .button-cancel.data-v-57280228,
+.scroll-view-box .buttons .button-cancel.data-v-57280228 {
+  margin: 0 30px;
 }
 
