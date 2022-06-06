@@ -8,6 +8,7 @@ exports.main = async (event, context) => {
 		createDate,
 		is_overdue,
 		pearRecord,
+		successEat,
 	} = event;
 	
 	db.collection("record").add({
@@ -15,6 +16,7 @@ exports.main = async (event, context) => {
 		createDate,
 		is_overdue,
 		pearRecord,
+		successEat,
 	})
 	//返回数据给客户端
 	return {

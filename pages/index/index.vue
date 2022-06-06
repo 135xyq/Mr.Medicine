@@ -1,46 +1,38 @@
 <template>
 	<view class="content">
-			<view>好突然
-		    </view>
+		<view class="test">
+			<RecordCard ref="test1"></RecordCard>
+			<RecordCard ref="test2"></RecordCard>
+		</view>
+		<button type="default" @click="getData">获取</button>
 	</view>
 </template>
 
 <script>
+	import RecordCard from "@/components/RecordCard.vue"
 	export default {
-	    data() {
-	        return {
-	            src:""
-	        }
-	    },
-	    methods: {
-	    }
+		components: {
+			RecordCard
+		},
+		data() {
+			return {
+				src: ""
+			}
+		},
+		mounted(){
+			// console.log(this.$refs.test1.getRecordCardData())
+		},
+		methods: {
+			getData(){
+				console.log(this.$refs.test1.getRecordCardData())
+				console.log(this.$refs.test2.getRecordCardData())
+			}
+		}
 	}
 </script>
 
 <style>
-	.content {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-	}
-
-	.logo {
-		height: 200rpx;
-		width: 200rpx;
-		margin-top: 200rpx;
-		margin-left: auto;
-		margin-right: auto;
-		margin-bottom: 50rpx;
-	}
-
-	.text-area {
-		display: flex;
-		justify-content: center;
-	}
-
-	.title {
-		font-size: 36rpx;
-		color: #8f8f94;
+	.test{
+		width: 100%;
 	}
 </style>

@@ -1,1 +1,1 @@
-<view class="content"><view>好突然</view></view>
+<view class="content"><view class="test"><record-card class="vue-ref" vue-id="8dd740cc-1" data-ref="test1" bind:__l="__l"></record-card><record-card class="vue-ref" vue-id="8dd740cc-2" data-ref="test2" bind:__l="__l"></record-card></view><button type="default" data-event-opts="{{[['tap',[['getData',['$event']]]]]}}" bindtap="__e">获取</button></view>

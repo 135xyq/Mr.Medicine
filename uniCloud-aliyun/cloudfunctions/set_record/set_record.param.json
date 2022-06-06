@@ -6,27 +6,49 @@
 	"pearRecord":[{
 		drugName:"test1",//药名
 		drugAvatar:"https://thirdwx.qlogo.cn/mmopen/vi_32/iaA3kiaYK2wOIwmQhWZkCDXDcdnOicVXcEbE5vHFdicM3qqiaxWibiagxTaogDukFibQL5DzAicmRaSFKQ8qibuZcACByib1Q/132"
-		pearCount:"3粒",//每次吃多少粒
-		allCount:"44盒",//总共多少盒
-		dayEat:3//一日几次
+		pearCount:{
+			cout:1,
+			unit:'粒'
+		},//每次吃多少粒
+		allCount:{
+			count:10,
+			unit:'盒',
+			pearCount:'24',//没和多少粒，
+			pearCount:'粒'//单位
+		},//总共多少盒
+		dayEat:3,//一日几次
+		successEat:12//目前吃了多少次药
 	},{
-		drugName:"test2",//药名
+		drugName:"test1",//药名
 		drugAvatar:"https://thirdwx.qlogo.cn/mmopen/vi_32/iaA3kiaYK2wOIwmQhWZkCDXDcdnOicVXcEbE5vHFdicM3qqiaxWibiagxTaogDukFibQL5DzAicmRaSFKQ8qibuZcACByib1Q/132"
-		pearCount:"2粒",//每次吃多少粒
-		allCount:"3瓶",//总共多少盒
-		dayEat:2//一日几次
-	},{
-		drugName:"test3",//药名
+		pearCount:{
+			cout:1,
+			unit:'粒'
+		},//每次吃多少粒
+		allCount:{
+			count:10,
+			unit:'盒',
+			pearCount:'24',//没和多少粒，
+			pearCount:'粒'//单位
+		},//总共多少盒
+		dayEat:3,//一日几次
+		successEat:12//目前吃了多少次药，
+		},
+	{
+		drugName:"test1",//药名
 		drugAvatar:"https://thirdwx.qlogo.cn/mmopen/vi_32/iaA3kiaYK2wOIwmQhWZkCDXDcdnOicVXcEbE5vHFdicM3qqiaxWibiagxTaogDukFibQL5DzAicmRaSFKQ8qibuZcACByib1Q/132"
-		pearCount:"2粒",//每次吃多少粒
-		allCount:"3盒",//总共多少盒
-		dayEat:2//一日几次
-	},{
-		drugName:"test4",//药名
-		drugAvatar:"https://thirdwx.qlogo.cn/mmopen/vi_32/iaA3kiaYK2wOIwmQhWZkCDXDcdnOicVXcEbE5vHFdicM3qqiaxWibiagxTaogDukFibQL5DzAicmRaSFKQ8qibuZcACByib1Q/132"
-		pearCount:"5袋",//每次吃多少粒
-		allCount:"3盒",//总共多少盒
-		dayEat:3//一日几次
+		pearCount:{
+			cout:1,
+			unit:'粒'
+		},//每次吃多少粒
+		allCount:{
+			count:10,
+			unit:'盒',
+			pearCount:'24',//没和多少粒，
+			pearUnit:'粒'//单位
+		},//总共多少盒
+		dayEat:3,//一日几次
+		successEat:1234//目前吃了多少次药
 	}]
 	
 	
