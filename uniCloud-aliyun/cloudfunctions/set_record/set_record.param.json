@@ -1,44 +1,13 @@
 // 本文件中的json内容将在云函数【运行】时作为参数传给云函数。
 // 配置教程参考：https://uniapp.dcloud.net.cn/uniCloud/quickstart?id=runparam
 {	"user_openid":"oB5r_5VDWeF8hunHPnci8NQj3uUQ",
-	"createDate":"2022-06-05",
-	"is_overdue":false,//是否过期
+	"createDate":"2022-06-06",
+	"is_overdue":true,//是否过期
 	"pearRecord":[{
-		drugName:"test1",//药名
+		drugName:"test3",//药名
 		drugAvatar:"https://thirdwx.qlogo.cn/mmopen/vi_32/iaA3kiaYK2wOIwmQhWZkCDXDcdnOicVXcEbE5vHFdicM3qqiaxWibiagxTaogDukFibQL5DzAicmRaSFKQ8qibuZcACByib1Q/132"
 		pearCount:{
-			cout:1,
-			unit:'粒'
-		},//每次吃多少粒
-		allCount:{
-			count:10,
-			unit:'盒',
-			pearCount:'24',//没和多少粒，
-			pearCount:'粒'//单位
-		},//总共多少盒
-		dayEat:3,//一日几次
-		successEat:12//目前吃了多少次药
-	},{
-		drugName:"test1",//药名
-		drugAvatar:"https://thirdwx.qlogo.cn/mmopen/vi_32/iaA3kiaYK2wOIwmQhWZkCDXDcdnOicVXcEbE5vHFdicM3qqiaxWibiagxTaogDukFibQL5DzAicmRaSFKQ8qibuZcACByib1Q/132"
-		pearCount:{
-			cout:1,
-			unit:'粒'
-		},//每次吃多少粒
-		allCount:{
-			count:10,
-			unit:'盒',
-			pearCount:'24',//没和多少粒，
-			pearCount:'粒'//单位
-		},//总共多少盒
-		dayEat:3,//一日几次
-		successEat:12//目前吃了多少次药，
-		},
-	{
-		drugName:"test1",//药名
-		drugAvatar:"https://thirdwx.qlogo.cn/mmopen/vi_32/iaA3kiaYK2wOIwmQhWZkCDXDcdnOicVXcEbE5vHFdicM3qqiaxWibiagxTaogDukFibQL5DzAicmRaSFKQ8qibuZcACByib1Q/132"
-		pearCount:{
-			cout:1,
+			count:1,
 			unit:'粒'
 		},//每次吃多少粒
 		allCount:{
@@ -48,7 +17,38 @@
 			pearUnit:'粒'//单位
 		},//总共多少盒
 		dayEat:3,//一日几次
-		successEat:1234//目前吃了多少次药
+		successEat:12//目前吃了多少次药
+	},{
+		drugName:"test1",//药名
+		drugAvatar:"https://thirdwx.qlogo.cn/mmopen/vi_32/iaA3kiaYK2wOIwmQhWZkCDXDcdnOicVXcEbE5vHFdicM3qqiaxWibiagxTaogDukFibQL5DzAicmRaSFKQ8qibuZcACByib1Q/132"
+		pearCount:{
+			count:3,
+			unit:'粒'
+		},//每次吃多少粒
+		allCount:{
+			count:23,
+			unit:'盒',
+			pearCount:'24',//没和多少粒，
+			pearUnit:'粒'//单位
+		},//总共多少盒
+		dayEat:2,//一日几次
+		successEat:12//目前吃了多少次药，
+		},
+	{
+		drugName:"test1",//药名
+		drugAvatar:"https://thirdwx.qlogo.cn/mmopen/vi_32/iaA3kiaYK2wOIwmQhWZkCDXDcdnOicVXcEbE5vHFdicM3qqiaxWibiagxTaogDukFibQL5DzAicmRaSFKQ8qibuZcACByib1Q/132"
+		pearCount:{
+			count:1,
+			unit:'粒'
+		},//每次吃多少粒
+		allCount:{
+			count:10,
+			unit:'盒',
+			pearCount:'24',//没和多少粒，
+			pearUnit:'粒'//单位
+		},//总共多少盒
+		dayEat:2,//一日几次
+		successEat:1//目前吃了多少次药
 	}]
 	
 	
