@@ -1,5 +1,7 @@
 {
   "navigationBarTitleText": "新增一个记录",
   "enablePullDownRefresh": false,
-  "usingComponents": {}
+  "usingComponents": {
+    "record-card": "/components/RecordCard"
+  }
 }

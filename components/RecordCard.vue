@@ -156,7 +156,7 @@
 				uni.chooseImage({
 					count: 1,
 					success: async (res) => {
-						this.drugAvatar = res.tempFiles[0];
+						// this.drugAvatar = res.tempFiles[0];
 						// 上传图片
 						if (res.tempFilePaths.length > 0) {
 							let url = res.tempFiles[0].path;
@@ -166,8 +166,8 @@
 					.toString(16)) + url.substr(url.lastIndexOf('.')),
 							});
 							this.drugAvatar = result.filePath;
-							console.log(result)
-							console.log(this.drugAvatar)
+							// console.log(result)
+							// console.log(this.drugAvatar)
 						}
 					}
 				})

@@ -1,1 +1,28 @@
-/* pages/newRecord/newRecord.wxss */
+.new-add-one.data-v-1da5c72a {
+  text-align: right;
+  margin-right: 20px;
+}
+.buttons.data-v-1da5c72a {
+  width: 100%;
+  text-align: center;
+  margin: 30px 0;
+  font-size: 16px;
+}
+.buttons .button-cancel.data-v-1da5c72a,
+.buttons .button-confirm.data-v-1da5c72a {
+  margin: 0 10px;
+}
+.buttons .button-cancel.data-v-1da5c72a,
+.buttons .button-confirm.data-v-1da5c72a,
+.buttons .button-apply.data-v-1da5c72a {
+  width: 200rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+.buttons .button-confirm.data-v-1da5c72a {
+  background-color: #007AFF;
+}
+.buttons .button-cancel.data-v-1da5c72a {
+  width: 150rpx;
+}
+

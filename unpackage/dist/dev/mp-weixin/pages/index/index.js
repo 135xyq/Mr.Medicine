@@ -231,7 +231,7 @@ __webpack_require__.r(__webpack_exports__);
               setTimeout(function () {
                 uni.stopPullDownRefresh();
                 uni.showToast({
-                  title: '刷新成功！',
+                  title: '刷新成功',
                   icon: "none" });
 
               }, 1000);case 3:case "end":return _context.stop();}}}, _callee);}))();
@@ -264,7 +264,8 @@ __webpack_require__.r(__webpack_exports__);
                   uniCloud.callFunction({
                     name: 'get_currentRecord',
                     data: {
-                      openid: _this3.$store.state.userInfo.userInfo.openid } }));case 2:res = _context3.sent;
+                      openid: _this3.$store.state.userInfo.userInfo.openid,
+                      newId: '213' } }));case 2:res = _context3.sent;
 
 
                 _this3.currentRecord = res.result.data;case 4:case "end":return _context3.stop();}}}, _callee3);}))();
@@ -291,7 +292,7 @@ __webpack_require__.r(__webpack_exports__);
                               if (!(temp.drugName === '')) {_context4.next = 8;break;}
                               // 药名为空
                               uni.showToast({
-                                title: '请输入药品名称！',
+                                title: '请输入药品名称',
                                 icon: 'error' });return _context4.abrupt("return");case 8:if (!(
 
 
@@ -299,7 +300,7 @@ __webpack_require__.r(__webpack_exports__);
                               temp.drugPearCount.count === '')) {_context4.next = 11;break;}
                               // 每次剂量为空
                               uni.showToast({
-                                title: '请输入药品每次服用剂量！',
+                                title: '请输入药品每次服用剂量',
                                 icon: 'error' });return _context4.abrupt("return");case 11:if (!(
 
 
@@ -341,6 +342,7 @@ __webpack_require__.r(__webpack_exports__);
     // 新增一个药品信息
     newAddOneRecord: function newAddOneRecord() {
       var temp = {
+        pearId: '',
         drugName: "",
         drugAvatar: "",
         drugPearCount: {

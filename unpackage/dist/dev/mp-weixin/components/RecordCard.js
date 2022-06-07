@@ -297,20 +297,20 @@ var _default =
     addImg: function addImg() {var _this = this;
       uni.chooseImage({
         count: 1,
-        success: function () {var _success = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee(res) {var url, result;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
-                    _this.drugAvatar = res.tempFiles[0];
-                    // 上传图片
-                    if (!(res.tempFilePaths.length > 0)) {_context.next = 9;break;}
-                    url = res.tempFiles[0].path;_context.next = 5;return (
+        success: function () {var _success = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee(res) {var url, result;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:if (!(
+
+
+                    res.tempFilePaths.length > 0)) {_context.next = 6;break;}
+                    url = res.tempFiles[0].path;_context.next = 4;return (
                       uniCloud.uploadFile({
                         filePath: url,
                         cloudPath: new Date().getTime() + Math.floor(Math.random() * 100000 + 10000).
-                        toString(16) + url.substr(url.lastIndexOf('.')) }));case 5:result = _context.sent;
+                        toString(16) + url.substr(url.lastIndexOf('.')) }));case 4:result = _context.sent;
 
                     _this.drugAvatar = result.filePath;
-                    console.log(result);
-                    console.log(_this.drugAvatar);case 9:case "end":return _context.stop();}}}, _callee);}));function success(_x) {return _success.apply(this, arguments);}return success;}() });
-
+                    // console.log(result)
+                    // console.log(this.drugAvatar)
+                  case 6:case "end":return _context.stop();}}}, _callee);}));function success(_x) {return _success.apply(this, arguments);}return success;}() });
 
 
 

@@ -1,6 +1,6 @@
 <template>
 	<view>
-		历史记录
+		药品使用说明书
 	</view>
 </template>
 

@@ -64,7 +64,7 @@
 			setTimeout(()=>{
 				uni.stopPullDownRefresh();
 				uni.showToast({
-					title: '刷新成功！',
+					title: '刷新成功',
 					icon:"none"
 				});
 			},1000)
@@ -98,6 +98,7 @@
 					name: 'get_currentRecord',
 					data: {
 						openid: this.$store.state.userInfo.userInfo.openid,
+						newId:'213'
 					}
 				});
 				this.currentRecord = res.result.data;
@@ -124,7 +125,7 @@
 								if (temp.drugName === '') {
 									// 药名为空
 									uni.showToast({
-										title: '请输入药品名称！',
+										title: '请输入药品名称',
 										icon: 'error'
 									})
 									return;
@@ -132,7 +133,7 @@
 								if (temp.drugPearCount.count === '') {
 									// 每次剂量为空
 									uni.showToast({
-										title: '请输入药品每次服用剂量！',
+										title: '请输入药品每次服用剂量',
 										icon: 'error'
 									})
 									return;
@@ -174,6 +175,7 @@
 			// 新增一个药品信息
 			newAddOneRecord() {
 				const temp = {
+					pearId:'',
 					drugName: "",
 					drugAvatar: "",
 					drugPearCount: {
