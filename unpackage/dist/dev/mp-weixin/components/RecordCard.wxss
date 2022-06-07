@@ -1,14 +1,17 @@
 .record-crad-container.data-v-5a2773c8 {
   width: 100%;
-  height: 580rpx;
-  background-color: #F8F8F8;
   color: #222;
 }
 .record-crad-container .item.data-v-5a2773c8 {
   margin: 10px 0;
-  padding: 0 15px;
   height: 30px;
   display: flex;
+}
+.record-crad-container .delete-record.data-v-5a2773c8 {
+  text-align: right;
+}
+.record-crad-container .drug-name.data-v-5a2773c8 {
+  margin-top: 0;
 }
 .record-crad-container .label.data-v-5a2773c8 {
   line-height: 30px;
@@ -38,7 +41,7 @@
   border-radius: 5px;
 }
 .record-crad-container .drug-name-input.data-v-5a2773c8 {
-  text-indent: 0.5em;
+  padding-left: 10rpx;
 }
 .record-crad-container .drug-name.data-v-5a2773c8 {
   padding-top: 10px;

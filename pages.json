@@ -3,9 +3,10 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "首页"
+				"navigationBarTitleText": "首页",
+				"enablePullDownRefresh": true
 			}
-		}, 
+		},
 		{
 			"path": "pages/self/self",
 			"style": {
@@ -21,21 +22,26 @@
 				"enablePullDownRefresh": false
 			}
 
+		}, {
+			"path": "pages/hsitoryPage/hsitoryPage",
+			"style": {
+				"navigationBarTitleText": "历史记录",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/feedback/feedback",
+			"style": {
+				"navigationBarTitleText": "问题反馈",
+				"enablePullDownRefresh": false
+			}
+
 		}
 	    ,{
-            "path" : "pages/hsitoryPage/hsitoryPage",
+            "path" : "pages/newRecord/newRecord",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "历史记录",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/feedback/feedback",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "新增一个记录",
                 "enablePullDownRefresh": false
             }
             
