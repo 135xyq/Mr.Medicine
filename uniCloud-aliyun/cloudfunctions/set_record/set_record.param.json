@@ -3,6 +3,7 @@
 {	"user_openid":"oB5r_5VDWeF8hunHPnci8NQj3uUQ",
 	"createDate":"2022-06-06",
 	"is_overdue":true,//是否过期
+	"is_template":"true",//是否是模板
 	"pearRecord":[{
 		drugName:"test3",//药名
 		drugAvatar:"https://thirdwx.qlogo.cn/mmopen/vi_32/iaA3kiaYK2wOIwmQhWZkCDXDcdnOicVXcEbE5vHFdicM3qqiaxWibiagxTaogDukFibQL5DzAicmRaSFKQ8qibuZcACByib1Q/132"

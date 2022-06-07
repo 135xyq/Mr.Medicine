@@ -9,20 +9,23 @@ exports.main = async (event, context) => {
 		is_overdue,
 		pearRecord,
 		successEat,
+		is_template,
 	} = event;
 	
-	db.collection("record").add({
+	const  res = await db.collection("record").add({
 		user_openid,
 		createDate,
 		is_overdue,
 		pearRecord,
 		successEat,
+		is_template,
 	})
 	//返回数据给客户端
 	return {
 		code:0,
+		msg:"保存成功",
 		data:{
-			mag:'保存成功！'
+			id:res.id
 		}
 	}
 };
