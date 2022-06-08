@@ -54,6 +54,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/map/map",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "附近地图",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
@@ -76,7 +85,13 @@
 			"iconPath": "static/img/read.png",
 			"selectedIconPath": "static/img/read-active.png",
 			"text": "药品说明书"
-		}, {
+		}
+		, {
+			"pagePath": "pages/map/map",
+			"iconPath": "static/img/map.png",
+			"selectedIconPath": "static/img/map-active.png",
+			"text": "附近地图"
+		},{
 			"pagePath": "pages/self/self",
 			"iconPath": "static/img/my.png",
 			"selectedIconPath": "static/img/my-active.png",

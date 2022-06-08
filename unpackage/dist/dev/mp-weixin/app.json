@@ -6,7 +6,8 @@
     "pages/hsitoryPage/hsitoryPage",
     "pages/feedback/feedback",
     "pages/newRecord/newRecord",
-    "pages/setting/setting"
+    "pages/setting/setting",
+    "pages/map/map"
   ],
   "subPackages": [],
   "window": {
@@ -32,6 +33,12 @@
         "iconPath": "static/img/read.png",
         "selectedIconPath": "static/img/read-active.png",
         "text": "药品说明书"
+      },
+      {
+        "pagePath": "pages/map/map",
+        "iconPath": "static/img/map.png",
+        "selectedIconPath": "static/img/map-active.png",
+        "text": "附近地图"
       },
       {
         "pagePath": "pages/self/self",
