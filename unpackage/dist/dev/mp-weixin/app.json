@@ -1,8 +1,8 @@
 {
     "pages": [
+        "pages/history/history",
         "pages/index/index",
         "pages/self/self",
-        "pages/history/history",
         "pages/hsitoryPage/hsitoryPage",
         "pages/feedback/feedback",
         "pages/newRecord/newRecord"
@@ -28,8 +28,8 @@
             },
             {
                 "pagePath": "pages/history/history",
-                "iconPath": "static/img/history.png",
-                "selectedIconPath": "static/img/history-active.png",
+                "iconPath": "static/img/read.png",
+                "selectedIconPath": "static/img/read-active.png",
                 "text": "药品说明书"
             },
             {

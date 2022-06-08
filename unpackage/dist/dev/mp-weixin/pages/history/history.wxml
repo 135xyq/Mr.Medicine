@@ -1,1 +1,1 @@
-<view>药品使用说明书</view>
+<view><uni-indexed-list vue-id="7335a0d6-1" options="{{data}}" bind:__l="__l"></uni-indexed-list></view>
