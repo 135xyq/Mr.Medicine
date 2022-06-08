@@ -1,12 +1,20 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
-			"path": "pages/history/history",
+			"path": "pages/self/self",
 			"style": {
-				"navigationBarTitleText": "使用说明书",
+				"navigationBarTitleText": "个人中心",
 				"enablePullDownRefresh": false
 			}
-		
+
+		},
+		{
+			"path": "pages/history/history",
+			"style": {
+				"navigationBarTitleText": "药品说明书",
+				"enablePullDownRefresh": false
+			}
+
 		},
 		{
 			"path": "pages/index/index",
@@ -16,14 +24,6 @@
 			}
 		},
 		{
-			"path": "pages/self/self",
-			"style": {
-				"navigationBarTitleText": "个人中心",
-				"enablePullDownRefresh": false
-			}
-
-		},
- {
 			"path": "pages/hsitoryPage/hsitoryPage",
 			"style": {
 				"navigationBarTitleText": "历史记录",
@@ -37,12 +37,19 @@
 				"enablePullDownRefresh": false
 			}
 
+		}, {
+			"path": "pages/newRecord/newRecord",
+			"style": {
+				"navigationBarTitleText": "新增一个记录",
+				"enablePullDownRefresh": false
+			}
+
 		}
 	    ,{
-            "path" : "pages/newRecord/newRecord",
+            "path" : "pages/setting/setting",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "新增一个记录",
+                "navigationBarTitleText": "个人设置",
                 "enablePullDownRefresh": false
             }
             

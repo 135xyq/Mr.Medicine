@@ -31,7 +31,15 @@
 				<!-- 问题反馈 -->
 				<view class="chat item" @click="onHandleToFeedback">
 					<uni-icons custom-prefix="iconfont" type="icon-fankui" size="25"></uni-icons>
+					<!-- <uni-icons type="gear" size="25"></uni-icons> -->
 					<view class="select-item chat-item">问题反馈</view>
+					<uni-icons type="forward" color="#939188" size="20" class="load-to-page"></uni-icons>
+					
+				</view>
+				<!-- 设置 -->
+				<view class="set item" @click="onHandleToSet">
+					<uni-icons type="gear" size="25"></uni-icons>
+					<view class="select-item set-item">设置</view>
 					<uni-icons type="forward" color="#939188" size="20" class="load-to-page"></uni-icons>
 				</view>
 			</view>
@@ -164,90 +172,18 @@
 				uni.navigateTo({
 					url: '/pages/feedback/feedback',
 				})
+			},
+			// 跳转到设置页
+			onHandleToSet(){
+				uni.navigateTo({
+					url: '/pages/setting/setting',
+				})
 			}
 		}
 	}
 </script>
 
-<style>
+<style scoped lang="less">
 	@import "@/static/iconfont.css";
-	.wx-login {
-		width: 100%;
-		position: relative;
-	}
-
-	.unlogin-user-avatar {
-		width: 300rpx;
-		height: 300rpx;
-		border-radius: 50%;
-		position: absolute;
-		top: 30rpx;
-		left: calc(50% - 150rpx);
-	}
-
-	.login-button {
-		width: 70vw;
-		font-size: 20px;
-		position: absolute;
-		top: 400rpx;
-		left: 50%;
-		transform: translateX(-50%);
-	}
-
-	.wx-logined {
-		width: 100%;
-	}
-
-	.header {
-		height: 150rpx;
-		margin: 20px 20px;
-	}
-
-	.header-info {
-		display: block;
-		width: 100%;
-		height: 150rpx;
-	}
-
-	.login-user-avatar {
-		width: 150rpx;
-		height: 150rpx;
-		border-radius: 10%;
-	}
-
-	.nick-name {
-		line-height: 150rpx;
-	}
-
-	.content {
-		margin-top: 30px;
-		/* padding-left: 20px; */
-	}
-
-	.item {
-		height: 100rpx;
-		line-height: 100rpx;
-		width: 100%;
-		position: relative;
-		padding-left: 20px;
-	}
-
-
-	.select-item {
-		height: 100%;
-		margin-left: 30rpx;
-		width: 88%;
-		border-top: 1px solid #dfdfdf;
-		display: inline-block;
-	}
-
-	.chat-item {
-		border-bottom: 1px solid #dfdfdf;
-	}
-
-	.load-to-page {
-		position: absolute;
-		top: 0rpx;
-		right: 50rpx;
-	}
+	@import "./self.less";
 </style>

@@ -22,7 +22,7 @@ exports.main = async (event, context) => {
 	}
 	const result = await collection.doc(newid).update({
 		is_overdue:false,
-		is_template:false
+		// is_template:false
 	})
 	
 	// console.log(result)

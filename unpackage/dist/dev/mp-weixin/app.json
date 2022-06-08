@@ -1,46 +1,46 @@
 {
-    "pages": [
-        "pages/history/history",
-        "pages/index/index",
-        "pages/self/self",
-        "pages/hsitoryPage/hsitoryPage",
-        "pages/feedback/feedback",
-        "pages/newRecord/newRecord"
-    ],
-    "subPackages": [],
-    "window": {
-        "navigationBarTextStyle": "black",
-        "navigationBarTitleText": "uni-app",
-        "navigationBarBackgroundColor": "#F8F8F8",
-        "backgroundColor": "#F8F8F8"
-    },
-    "tabBar": {
-        "color": "#7A7E83",
-        "selectedColor": "#ff5500",
-        "borderStyle": "black",
-        "backgroundColor": "#ffffff",
-        "list": [
-            {
-                "pagePath": "pages/index/index",
-                "iconPath": "static/img/home.png",
-                "selectedIconPath": "static/img/home-active.png",
-                "text": "首页"
-            },
-            {
-                "pagePath": "pages/history/history",
-                "iconPath": "static/img/read.png",
-                "selectedIconPath": "static/img/read-active.png",
-                "text": "药品说明书"
-            },
-            {
-                "pagePath": "pages/self/self",
-                "iconPath": "static/img/my.png",
-                "selectedIconPath": "static/img/my-active.png",
-                "text": "个人中心"
-            }
-        ]
-    },
-    "permission": {},
-    "usingComponents": {},
-    "sitemapLocation": "sitemap.json"
+  "pages": [
+    "pages/self/self",
+    "pages/history/history",
+    "pages/index/index",
+    "pages/hsitoryPage/hsitoryPage",
+    "pages/feedback/feedback",
+    "pages/newRecord/newRecord",
+    "pages/setting/setting"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#ff5500",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/img/home.png",
+        "selectedIconPath": "static/img/home-active.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/history/history",
+        "iconPath": "static/img/read.png",
+        "selectedIconPath": "static/img/read-active.png",
+        "text": "药品说明书"
+      },
+      {
+        "pagePath": "pages/self/self",
+        "iconPath": "static/img/my.png",
+        "selectedIconPath": "static/img/my-active.png",
+        "text": "个人中心"
+      }
+    ]
+  },
+  "permission": {},
+  "usingComponents": {}
 }
