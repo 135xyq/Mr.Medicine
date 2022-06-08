@@ -67,7 +67,7 @@
 			"pagePath": "pages/history/history",
 			"iconPath": "static/img/history.png",
 			"selectedIconPath": "static/img/history-active.png",
-			"text": "历史记录"
+			"text": "药品说明书"
 		}, {
 			"pagePath": "pages/self/self",
 			"iconPath": "static/img/my.png",

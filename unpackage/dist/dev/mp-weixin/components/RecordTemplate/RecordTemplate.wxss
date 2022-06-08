@@ -1,0 +1,12 @@
+.card-container.data-v-64530fe4 {
+  width: 100%;
+}
+.card-container .buttons.data-v-64530fe4 {
+  text-align: right;
+}
+.card-container .delete-button.data-v-64530fe4 {
+  background-color: #e20000;
+  color: #fff;
+  margin-right: 10px;
+}
+

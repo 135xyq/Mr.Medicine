@@ -31,7 +31,7 @@
 					user_openid: '',
 					createDate: '',
 					is_overdue: true,
-					is_template:false,
+					is_template: false,
 					pearRecord: [{
 						// pearId
 						drugName: "",
@@ -51,7 +51,7 @@
 					successEat: 0
 				},
 				flag: true, //内容填写完整
-				newId:'',//新增的ID
+				newId: '', //新增的ID
 			}
 		},
 		created() {
@@ -138,31 +138,31 @@
 				}
 				this.data.is_template = true;
 				const res = await uniCloud.callFunction({
-					name:'set_record',
-					data:{
+					name: 'set_record',
+					data: {
 						...this.data,
 					}
 				})
 				uni.showToast({
-					title:res.result.msg,
+					title: res.result.msg,
 				})
 				this.newId = res.result.data.id;
 			},
 			// 直接应用
 			async onHandleApplyModification() {
 				await this.onHandleConfirmModification();
-				if(this.flag){
+				if (this.flag) {
 					// 内容填写完整
 					const res = await uniCloud.callFunction({
-						name:"set_apply_record",
-						data:{
-							user_openid:this.$store.state.userInfo.userInfo.openid,
-							newid:this.newId
+						name: "set_apply_record",
+						data: {
+							user_openid: this.$store.state.userInfo.userInfo.openid,
+							newid: this.newId
 						}
 					})
-					setTimeout(()=>{
+					setTimeout(() => {
 						uni.navigateBack();
-					},1000)
+					}, 1000)
 				}
 			}
 		}

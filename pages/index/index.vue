@@ -43,31 +43,47 @@
 			<button type="default" size="mini" @click="onHandleNewRecord">新建一个记录</button>
 			<!-- <RecordCard :parentData="{}" @deleteOneRecord="onHandleDeleteOneRecord"></RecordCard> -->
 		</view>
+		<view class="template">
+			<uni-card title="我的模板">
+				<view class="no-template-record" v-if="templateRecord.length ===0">
+					暂无内容
+				</view>
+				<view class="has-template-record" v-if="templateRecord.length > 0">
+					<view class="template-container" v-for="item in templateRecord" :key="item._id">
+						<RecordTemplate :data="item" @applyTemplate="onHandleApplyTemplate" @deleteTemplate = "onHandleDeleteTemplate"></RecordTemplate>
+					</view>
+				</view>
+			</uni-card>
+		</view>
 	</view>
 </template>
 
 <script>
-	import RecordCard from "@/components/RecordCard.vue"
+	import RecordCard from "@/components/RecordCard.vue";
+	import RecordTemplate from "@/components/RecordTemplate/RecordTemplate.vue";
 	export default {
 		components: {
-			RecordCard
+			RecordCard,
+			RecordTemplate
 		},
 		data() {
 			return {
 				currentRecord: {}, //当前正在吃的记录
 				tempRecord: {},
+				templateRecord:[],//模板记录
 			}
 		},
 		// 下拉获取信息
 		async onPullDownRefresh() {
 			await this.getCurrentRecord();
-			setTimeout(()=>{
+			await this.getTemplateRecord();
+			setTimeout(() => {
 				uni.stopPullDownRefresh();
 				uni.showToast({
 					title: '刷新成功',
-					icon:"none"
+					icon: "none"
 				});
-			},1000)
+			}, 1000)
 		},
 		watch: {
 			currentRecord: function(newData, oldData) {
@@ -78,8 +94,20 @@
 		async created() {
 			// console.log(this.$refs.test1.getRecordCardData())
 			await this.getCurrentRecord();
+			await this.getTemplateRecord();
 		},
 		methods: {
+			// 获取模板信息
+			async getTemplateRecord(){
+				const res = await uniCloud.callFunction({
+					name:"get_template_record",
+					data:{
+						user_openid:this.$store.state.userInfo.userInfo.openid,
+					}
+				})
+				
+				this.templateRecord = res.result.data;
+			},
 			// 打开今日吃药的抽屉
 			showRecordDetailDrawer() {
 				if (this.currentRecord.length) {
@@ -98,7 +126,6 @@
 					name: 'get_currentRecord',
 					data: {
 						openid: this.$store.state.userInfo.userInfo.openid,
-						newId:'213'
 					}
 				});
 				this.currentRecord = res.result.data;
@@ -175,7 +202,7 @@
 			// 新增一个药品信息
 			newAddOneRecord() {
 				const temp = {
-					pearId:'',
+					pearId: '',
 					drugName: "",
 					drugAvatar: "",
 					drugPearCount: {
@@ -194,12 +221,12 @@
 				this.tempRecord[0].pearRecord.push(temp);
 			},
 			// 新增一个记录
-			onHandleNewRecord(){
+			onHandleNewRecord() {
 				// console.log(1)
 				uni.navigateTo({
-					url:"/pages/newRecord/newRecord",
-						animationType: 'pop-in',
-						animationDuration: 200
+					url: "/pages/newRecord/newRecord",
+					animationType: 'pop-in',
+					animationDuration: 200
 				})
 				// uni.go
 			},
@@ -221,6 +248,38 @@
 					icon: "none"
 				});
 				this.getCurrentRecord();
+			},
+			// 应用一个模板
+			async  onHandleApplyTemplate(id){
+				const res = await uniCloud.callFunction({
+					name:"set_apply_record",
+					data:{
+						user_openid:this.$store.state.userInfo.userInfo.openid,
+						newid:id
+					}
+				});
+				uni.showToast({
+					title:res.result.mag,
+				});
+				// 重新获取数据
+				await this.getCurrentRecord();
+				await this.getTemplateRecord();
+			},
+			// 删除一个模板
+			async onHandleDeleteTemplate(id){
+				const res = await uniCloud.callFunction({
+					name:"delete_record",
+					data:{
+						id,
+					}
+				});
+				uni.showToast({
+					title:res.result.msg,
+					icon:"none"
+				})
+				// 重新获取数据
+				await this.getCurrentRecord();
+				await this.getTemplateRecord();
 			}
 		}
 	}
