@@ -1,0 +1,1 @@
+<view class="drug-user-info-container"><view><rich-text nodes="{{htmlStr}}"></rich-text></view></view>

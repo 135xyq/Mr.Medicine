@@ -96,7 +96,7 @@ var components
 try {
   components = {
     uniEasyinput: function() {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput */ "uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput.vue */ 146))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput */ "uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput.vue */ 156))
     }
   }
 } catch (e) {
@@ -216,15 +216,16 @@ var _default =
     // 修改中午时间
     onHandleNoonTime: function onHandleNoonTime(e) {
       this.formData.noonTime = e.detail.value;
-      console.log(this.formData.noonTime);
+      // console.log(this.formData.noonTime)
     },
     //修改晚上时间
     onHandleNightTime: function onHandleNightTime(e) {
       this.formData.nightTime = e.detail.value;
-      console.log(this.formData.nightTime);
+      // console.log(this.formData.nightTime)
     },
     // 获取用户数据
     getUserSetting: function getUserSetting() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
+
                   uniCloud.callFunction({
                     name: "get_user_setting",
                     data: {

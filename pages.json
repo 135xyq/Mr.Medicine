@@ -6,23 +6,23 @@
 				"navigationBarTitleText": "个人中心",
 				"enablePullDownRefresh": false
 			}
-
-		},
-		{
+		
+		},{
 			"path": "pages/history/history",
 			"style": {
 				"navigationBarTitleText": "药品说明书",
 				"enablePullDownRefresh": false
 			}
-
-		},
-		{
+		
+		},{
 			"path": "pages/index/index",
 			"style": {
 				"navigationBarTitleText": "首页",
 				"enablePullDownRefresh": true
 			}
 		},
+
+
 		{
 			"path": "pages/hsitoryPage/hsitoryPage",
 			"style": {
@@ -44,21 +44,26 @@
 				"enablePullDownRefresh": false
 			}
 
+		}, {
+			"path": "pages/setting/setting",
+			"style": {
+				"navigationBarTitleText": "个人设置",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/map/map",
+			"style": {
+				"navigationBarTitleText": "附近地图",
+				"enablePullDownRefresh": false
+			}
+
 		}
 	    ,{
-            "path" : "pages/setting/setting",
+            "path" : "pages/drug_user_info/drug_user_info",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "个人设置",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/map/map",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "附近地图",
+                "navigationBarTitleText": "说明书详细内容",
                 "enablePullDownRefresh": false
             }
             
@@ -85,13 +90,12 @@
 			"iconPath": "static/img/read.png",
 			"selectedIconPath": "static/img/read-active.png",
 			"text": "药品说明书"
-		}
-		, {
+		}, {
 			"pagePath": "pages/map/map",
 			"iconPath": "static/img/map.png",
 			"selectedIconPath": "static/img/map-active.png",
 			"text": "附近地图"
-		},{
+		}, {
 			"pagePath": "pages/self/self",
 			"iconPath": "static/img/my.png",
 			"selectedIconPath": "static/img/my-active.png",

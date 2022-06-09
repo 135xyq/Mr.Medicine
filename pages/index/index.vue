@@ -55,16 +55,22 @@
 				</view>
 			</uni-card>
 		</view>
+<!-- 		<view class="show-record">
+			<ShowRecord></ShowRecord>
+					<uni-fab @fabClick="onHandleFabClick"></uni-fab>
+		</view> -->
 	</view>
 </template>
 
 <script>
 	import RecordCard from "@/components/RecordCard.vue";
 	import RecordTemplate from "@/components/RecordTemplate/RecordTemplate.vue";
+	import ShowRecord from "@/components/ShowRecord/ShowRecord.vue"
 	export default {
 		components: {
 			RecordCard,
-			RecordTemplate
+			RecordTemplate,
+			ShowRecord
 		},
 		data() {
 			return {

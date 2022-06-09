@@ -1,5 +1,8 @@
 {
   "navigationBarTitleText": "历史记录",
   "enablePullDownRefresh": false,
-  "usingComponents": {}
+  "usingComponents": {
+    "uni-list-chat": "/uni_modules/uni-list/components/uni-list-chat/uni-list-chat",
+    "uni-card": "/uni_modules/uni-card/components/uni-card/uni-card"
+  }
 }

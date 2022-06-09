@@ -61,15 +61,16 @@
 			// 修改中午时间
 			onHandleNoonTime(e) {
 				this.formData.noonTime = e.detail.value;
-				console.log(this.formData.noonTime)
+				// console.log(this.formData.noonTime)
 			},
 			//修改晚上时间
 			onHandleNightTime(e) {
 				this.formData.nightTime = e.detail.value;
-				console.log(this.formData.nightTime)
+				// console.log(this.formData.nightTime)
 			},
 			// 获取用户数据
 			async getUserSetting(){
+				// console.log(this.$store.state.userInfo.userInfo.openid)
 				const res = await uniCloud.callFunction({
 					name:"get_user_setting",
 					data:{

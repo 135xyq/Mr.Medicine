@@ -7,7 +7,8 @@
     "pages/feedback/feedback",
     "pages/newRecord/newRecord",
     "pages/setting/setting",
-    "pages/map/map"
+    "pages/map/map",
+    "pages/drug_user_info/drug_user_info"
   ],
   "subPackages": [],
   "window": {

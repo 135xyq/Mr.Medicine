@@ -10,7 +10,8 @@
 						<view v-if="showSelect" style="margin-right: 20rpx;">
 							<uni-icons :type="item.checked ? 'checkbox-filled' : 'circle'" :color="item.checked ? '#007aff' : '#C0C0C0'" size="24" />
 						</view>
-						<uni-link color="#222" :showUnderLine="false" class="uni-indexed-list__item-content" :href="item.url" :text="item.name"></uni-link>
+						<navigator :url="'/pages/drug_user_info/drug_user_info?url=' + item.url" class="uni-indexed-list__item-content">{{item.name}}</navigator>
+						<!-- <uni-link color="#222" :showUnderLine="false" class="uni-indexed-list__item-content" :href="item.url" :text="item.name"></uni-link> -->
 						<!-- <text class="uni-indexed-list__item-content">{{item.name}}</text> -->
 					</view>
 				</view>
