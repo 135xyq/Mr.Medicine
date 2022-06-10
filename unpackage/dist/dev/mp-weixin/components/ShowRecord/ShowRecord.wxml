@@ -1,1 +1,0 @@
-<view>1212<uni-countdown vue-id="e27fcafc-1" show-day="{{false}}" hour="{{1}}" minute="{{12}}" second="{{40}}" bind:__l="__l"></uni-countdown></view>

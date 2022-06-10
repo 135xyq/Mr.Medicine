@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "record-card": "/components/RecordCard"
-  },
-  "component": true
-}
