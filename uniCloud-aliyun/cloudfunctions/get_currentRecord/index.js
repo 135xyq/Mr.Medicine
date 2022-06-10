@@ -8,12 +8,12 @@ exports.main = async (event, context) => {
 	const {openid} = event;
 	const collection = db.collection("record");
 	const records = await collection.where({
-		user_openid:openid,
+		openid:openid,
 		is_overdue:false
 	}).get();
 	//返回数据给客户端
 	return {
 		code:0,
-		data:records.data[0]
+		data:records.data
 	}
 };
