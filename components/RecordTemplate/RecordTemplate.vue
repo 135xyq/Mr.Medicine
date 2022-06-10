@@ -1,5 +1,5 @@
 <template>
-	<uni-card class="card-container" :extra="'创建日期:' + formatDate(data.createDate)">
+	<uni-card class="card-container" :extra="'创建日期:' + formatDate(data.createDate)" @click="onHandleShowDrawer">
 		<view class="buttons">
 			<button class="delete-button" type="default" size="mini" @click="onHandleDetele">
 				<text>删除</text>
@@ -11,12 +11,28 @@
 		<view class="card-info">
 			药品种类：{{data.pearRecord.length}} 种
 		</view>
+		<view class="drawer">
+			<uni-drawer ref="showDrawer" mode="right" :mask-click="true" width="300">
+				<scroll-view style="height: 100%;" scroll-y="true">
+					<ShowRecordDetail :data="data"></ShowRecordDetail>
+					<view class="buttons">
+						<button class="btn-cancel" type="default" size="mini" @click="onHandleCloseDrawer">取消</button>
+						<button type="primary" size="mini" @click="onHandleEdit">确定</button>
+					</view>
+				</scroll-view>
+			</uni-drawer>
+		</view>
+		
 	</uni-card>
 </template>
 
 <script>
 	import formatDate from "@/utils/formateDate.js";
+	import ShowRecordDetail from "@/components/ShowRecordDetail/ShowRecordDetail.vue";
 	export default {
+		components:{
+			ShowRecordDetail,
+		},
 		name: "RecordTemplate",
 		props: ['data'],
 		data() {
@@ -60,6 +76,21 @@
 						}
 					}
 				})
+			},
+			// 显示详细信息
+			onHandleShowDrawer(){
+				this.$refs.showDrawer.open()
+			},
+			// 关闭
+			onHandleCloseDrawer(){
+				this.$refs.showDrawer.close()
+			},
+			// 修改模板
+			onHandleEdit(){
+				uni.showToast({
+					title:"功能待完善",
+					icon:"none"
+				})
 			}
 		}
 	}
@@ -67,4 +98,15 @@
 
 <style scoped lang="less">
 	@import "./RecordTemplate.less";
+	.drawer{
+		.buttons{
+			margin-top: 20px;
+			text-align: center;
+			.btn-cancel{
+				margin-right: 20px;
+			}
+		}
+		
+	}
+
 </style>

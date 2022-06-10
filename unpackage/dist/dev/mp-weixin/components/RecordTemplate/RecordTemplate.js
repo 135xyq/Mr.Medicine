@@ -81,6 +81,12 @@ try {
   components = {
     uniCard: function() {
       return __webpack_require__.e(/*! import() | uni_modules/uni-card/components/uni-card/uni-card */ "uni_modules/uni-card/components/uni-card/uni-card").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-card/components/uni-card/uni-card.vue */ 93))
+    },
+    uniDrawer: function() {
+      return __webpack_require__.e(/*! import() | uni_modules/uni-drawer/components/uni-drawer/uni-drawer */ "uni_modules/uni-drawer/components/uni-drawer/uni-drawer").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-drawer/components/uni-drawer/uni-drawer.vue */ 100))
+    },
+    ShowRecordDetail: function() {
+      return __webpack_require__.e(/*! import() | components/ShowRecordDetail/ShowRecordDetail */ "components/ShowRecordDetail/ShowRecordDetail").then(__webpack_require__.bind(null, /*! @/components/ShowRecordDetail/ShowRecordDetail.vue */ 202))
     }
   }
 } catch (e) {
@@ -163,6 +169,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 var _formateDate = _interopRequireDefault(__webpack_require__(/*! @/utils/formateDate.js */ 112));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
@@ -179,16 +197,20 @@ var _formateDate = _interopRequireDefault(__webpack_require__(/*! @/utils/format
 //
 //
 //
-var _default = { name: "RecordTemplate", props: ['data'], data: function data() {return {};}, methods: { formatDate: _formateDate.default, // 删除一个模板
-    onHandleDetele: function onHandleDetele() {var _this = this;uni.showModal({ title: "提示", content: "确定删除这个模板", success: function success(res) {if (res.confirm) {
-            _this.$emit("deleteTemplate", _this.data._id);
-          } else if (res.cancel) {
-            uni.showToast({
-              title: "取消删除",
-              icon: "none" });
-
-          }
-        } });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var ShowRecordDetail = function ShowRecordDetail() {__webpack_require__.e(/*! require.ensure | components/ShowRecordDetail/ShowRecordDetail */ "components/ShowRecordDetail/ShowRecordDetail").then((function () {return resolve(__webpack_require__(/*! @/components/ShowRecordDetail/ShowRecordDetail.vue */ 202));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { components: { ShowRecordDetail: ShowRecordDetail }, name: "RecordTemplate", props: ['data'], data: function data() {return {};}, methods: { formatDate: _formateDate.default, // 删除一个模板
+    onHandleDetele: function onHandleDetele() {var _this = this;uni.showModal({ title: "提示", content: "确定删除这个模板", success: function success(res) {if (res.confirm) {_this.$emit("deleteTemplate", _this.data._id);} else if (res.cancel) {uni.showToast({ title: "取消删除", icon: "none" });}} });
 
 
     },
@@ -207,6 +229,21 @@ var _default = { name: "RecordTemplate", props: ['data'], data: function data() 
 
           }
         } });
+
+    },
+    // 显示详细信息
+    onHandleShowDrawer: function onHandleShowDrawer() {
+      this.$refs.showDrawer.open();
+    },
+    // 关闭
+    onHandleCloseDrawer: function onHandleCloseDrawer() {
+      this.$refs.showDrawer.close();
+    },
+    // 修改模板
+    onHandleEdit: function onHandleEdit() {
+      uni.showToast({
+        title: "功能待完善",
+        icon: "none" });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

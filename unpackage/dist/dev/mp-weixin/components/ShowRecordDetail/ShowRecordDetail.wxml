@@ -1,0 +1,1 @@
+<view><block wx:for="{{data.pearRecord}}" wx:for-item="item" wx:for-index="index" wx:key="index"><view><record-card vue-id="{{'4f4926a2-1-'+index}}" parentData="{{item}}" bind:__l="__l"></record-card></view></block></view>

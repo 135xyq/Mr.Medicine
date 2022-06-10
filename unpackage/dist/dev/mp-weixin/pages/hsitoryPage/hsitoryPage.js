@@ -96,6 +96,12 @@ try {
     uniListChat: function() {
       return __webpack_require__.e(/*! import() | uni_modules/uni-list/components/uni-list-chat/uni-list-chat */ "uni_modules/uni-list/components/uni-list-chat/uni-list-chat").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-list/components/uni-list-chat/uni-list-chat.vue */ 120))
     },
+    uniDrawer: function() {
+      return __webpack_require__.e(/*! import() | uni_modules/uni-drawer/components/uni-drawer/uni-drawer */ "uni_modules/uni-drawer/components/uni-drawer/uni-drawer").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-drawer/components/uni-drawer/uni-drawer.vue */ 100))
+    },
+    ShowRecordDetail: function() {
+      return __webpack_require__.e(/*! import() | components/ShowRecordDetail/ShowRecordDetail */ "components/ShowRecordDetail/ShowRecordDetail").then(__webpack_require__.bind(null, /*! @/components/ShowRecordDetail/ShowRecordDetail.vue */ 202))
+    },
     uniCard: function() {
       return __webpack_require__.e(/*! import() | uni_modules/uni-card/components/uni-card/uni-card */ "uni_modules/uni-card/components/uni-card/uni-card").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-card/components/uni-card/uni-card.vue */ 93))
     }
@@ -192,11 +198,23 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _formateDate = _interopRequireDefault(__webpack_require__(/*! @/utils/formateDate.js */ 112));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var _default =
+
+
+
+
+
+
+
+var _formateDate = _interopRequireDefault(__webpack_require__(/*! @/utils/formateDate.js */ 112));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var ShowRecordDetail = function ShowRecordDetail() {__webpack_require__.e(/*! require.ensure | components/ShowRecordDetail/ShowRecordDetail */ "components/ShowRecordDetail/ShowRecordDetail").then((function () {return resolve(__webpack_require__(/*! @/components/ShowRecordDetail/ShowRecordDetail.vue */ 202));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
 {
+  components: {
+    ShowRecordDetail: ShowRecordDetail },
+
   data: function data() {
     return {
-      data: [] };
+      data: [],
+      showData: {} };
 
   },
   created: function created() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
@@ -213,7 +231,11 @@ var _formateDate = _interopRequireDefault(__webpack_require__(/*! @/utils/format
 
                 _this2.data = res.result.data;
                 // console.log(this.data)
-              case 4:case "end":return _context2.stop();}}}, _callee2);}))();} } };exports.default = _default;
+              case 4:case "end":return _context2.stop();}}}, _callee2);}))();},
+    onHandleShowDetail: function onHandleShowDetail(item) {
+      this.showData = item;
+      this.$refs.showDrawer.open();
+    } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js */ 21)["default"]))
 
 /***/ })
