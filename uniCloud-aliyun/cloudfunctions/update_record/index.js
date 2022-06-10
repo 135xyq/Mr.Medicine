@@ -1,19 +1,17 @@
 'use strict';
 /**
- * 获取历史记录
+ * 修改记录信息
  */
 
 const db = uniCloud.database();
 exports.main = async (event, context) => {
 	//event为客户端上传的参数
-	const {openid} = event;
-	const res = await db.collection("record").where({
-		openid,
-		is_overdue:true,
-	}).get();
+	const {id,data} = event;
+	const res = await db.collection("record").doc(id).update(data);
 	//返回数据给客户端
-	return {
+	return{
 		code:0,
-		data:res.data,
+		msg:'修改成功',
+		data:null,
 	}
 };

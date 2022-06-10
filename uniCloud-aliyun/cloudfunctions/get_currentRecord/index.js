@@ -14,6 +14,6 @@ exports.main = async (event, context) => {
 	//返回数据给客户端
 	return {
 		code:0,
-		data:records.data
+		data:records.data[0]
 	}
 };

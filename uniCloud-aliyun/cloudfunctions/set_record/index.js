@@ -4,21 +4,25 @@ exports.main = async (event, context) => {
 	// 新增一个吃药记录
 	//event为客户端上传的参数
 	const {
-		user_openid,
+		openid,
+		name,
 		createDate,
+		avatar,
 		is_overdue,
 		pearRecord,
 		successEat,
-		is_template,
+		description
 	} = event;
 	
 	const  res = await db.collection("record").add({
-		user_openid,
+		openid,
+		name,
 		createDate,
+		avatar,
 		is_overdue,
 		pearRecord,
 		successEat,
-		is_template,
+		description
 	})
 	//返回数据给客户端
 	return {

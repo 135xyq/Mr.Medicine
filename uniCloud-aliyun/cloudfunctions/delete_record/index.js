@@ -10,6 +10,6 @@ exports.main = async (event, context) => {
 	return {
 		code:0,
 		msg:"删除成功",
-		data:{}
+		data:null
 	}
 };
