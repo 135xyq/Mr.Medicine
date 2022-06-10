@@ -1,0 +1,7 @@
+{
+  "name": "apply_template",
+  "dependencies": {},
+  "extensions": {
+    "uni-cloud-jql": {}
+  }
+}

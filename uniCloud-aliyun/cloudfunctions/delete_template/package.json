@@ -1,0 +1,7 @@
+{
+  "name": "delete_template",
+  "dependencies": {},
+  "extensions": {
+    "uni-cloud-jql": {}
+  }
+}

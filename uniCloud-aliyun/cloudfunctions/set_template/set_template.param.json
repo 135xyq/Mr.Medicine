@@ -1,0 +1,77 @@
+// 本文件中的json内容将在云函数【运行】时作为参数传给云函数。
+// 配置教程参考：https://uniapp.dcloud.net.cn/uniCloud/quickstart?id=runparam
+{
+    "openid": "oB5r_5VDWeF8hunHPnci8NQj3uUQ",
+    "createDate": 1654614954601,
+    "is_overdue": true,
+	"name":"模板三",
+	"description":"描述信息",
+	"avatar":"http://qzapp.qlogo.cn/qzapp/101983660/F61F6EEE51E483105E9C9686BFFF61A2/100",
+	"successEat":0,
+    "pearRecord": [
+        {
+            "pearId": "1232324",
+            "drugName": "模板测试药品1",
+            "drugAvatar": "http://tmp/45Nsb6qbB5a6e3c676a8bd0aa1b7812cb784a81c032f.jpg",
+            "drugPearCount": {
+                "count": 1,
+                "unit": "粒"
+            },
+            "drugDayEatCount": 3,
+            "drugAllCount": {
+                "count": 1,
+                "unit": "盒",
+                "pearCount": 12,
+                "pearUnit": "粒"
+            }
+        },
+        {
+            "pearId": "1654580681597d52c",
+            "drugName": "模板测试药品2",
+            "drugAvatar": "https://thirdwx.qlogo.cn/mmopen/vi_32/iaA3kiaYK2wOIwmQhWZkCDXDcdnOicVXcEbE5vHFdicM3qqiaxWibiagxTaogDukFibQL5DzAicmRaSFKQ8qibuZcACByib1Q/132",
+            "drugPearCount": {
+                "count": 1,
+                "unit": "粒"
+            },
+            "drugDayEatCount": 2,
+            "drugAllCount": {
+                "count": 1,
+                "unit": "盒",
+                "pearCount": 12,
+                "pearUnit": "粒"
+            }
+        },
+        {
+            "pearId": "16545806816109265",
+            "drugName": "模板测试药品3",
+            "drugAvatar": "http://tmp/8A0Ro3eJ8mw5d6693e4e3c9f3df796bd3d46d1303e78.png",
+            "drugPearCount": {
+                "count": 1,
+                "unit": "粒"
+            },
+            "drugDayEatCount": 1,
+            "drugAllCount": {
+                "count": 1,
+                "unit": "盒",
+                "pearCount": 12,
+                "pearUnit": "粒"
+            }
+        },
+        {
+            "pearId": "165458068162064aa",
+            "drugName": "132",
+            "drugAvatar": "http://tmp/LtlIQmxlxiU4b31a4058c3fdf265a677263f997556d5.png",
+            "drugPearCount": {
+                "count": 1,
+                "unit": "粒"
+            },
+            "drugDayEatCount": 3,
+            "drugAllCount": {
+                "count": 1,
+                "unit": "盒",
+                "pearCount": 12,
+                "pearUnit": "粒"
+            }
+        }
+    ]
+}
