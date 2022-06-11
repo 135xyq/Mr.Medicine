@@ -1,13 +1,13 @@
 <template>
-	<uni-card :border="false" margin="0" class="card-container" :title="data.name"  :extra="formatDate(data.createDate)" @click="onHandleShowDrawer">
+	<uni-card :border="false" class="card-container" :title="data.name"  :extra="formatDate(data.createDate)" @click="onHandleShowDrawer">
 		<view class="img" >
-			<img slot="cover" :src="data.avatar" alt="">
+			<img slot="cover" class="image" :src="data.avatar" alt="">
 		</view>
-		<view class="">
-			描述信息：{{data.description}}
+		<view class="description">
+			<text class="title">描述信息：</text> {{data.description}}
 		</view>
 		<view class="card-info">
-			药品种类：{{data.pearRecord.length}} 种
+			<text class="title">药品种类：</text>{{data.pearRecord.length}} 种
 		</view>
 		<view class="buttons">
 			<button class="delete-button" type="default" size="mini" @click="onHandleDetele">
@@ -104,15 +104,5 @@
 
 <style scoped lang="less">
 	@import "./RecordTemplate.less";
-	.drawer{
-		.buttons{
-			margin-top: 20px;
-			text-align: center;
-			.btn-cancel{
-				margin-right: 20px;
-			}
-		}
-		
-	}
 
 </style>
