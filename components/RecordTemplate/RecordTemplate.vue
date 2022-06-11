@@ -12,7 +12,7 @@
 			药品种类：{{data.pearRecord.length}} 种
 		</view>
 		<view class="drawer">
-			<uni-drawer ref="showDrawer" mode="right" :mask-click="true" width="300">
+			<uni-drawer ref="showDrawer" mode="right" :mask-click="true" width="350">
 				<scroll-view style="height: 100%;" scroll-y="true">
 					<ShowRecordDetail :data="data"></ShowRecordDetail>
 					<view class="buttons">

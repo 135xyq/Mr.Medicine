@@ -2,8 +2,9 @@
 	<view class="content">
 		<view class="current-record">
 			<view class="example-body">
-				<uni-card :is-shadow=true @click="showRecordDetailDrawer" class="card-title" title="今日吃药">
-					<view class="has-current-record" v-if="currentRecord.length > 0">
+				<uni-card :is-shadow=true @click="showRecordDetailDrawer" class="card-title" title="今日吃药"
+					:extra="currentRecord.length > 0 ? currentRecord[0].name:''">
+					<view class=" has-current-record" v-if="currentRecord.length > 0">
 						<view class="word-btn-white">药品种类：{{currentRecord[0].pearRecord.length}}种</view>
 						<view class="other-record">
 							剩下的药品还能吃:12天
@@ -19,7 +20,10 @@
 							<view class="show-draw-title">
 								<text>当前记录的详细信息</text>
 							</view>
-							<view class="" v-for="(item,index) in tempRecord[0].pearRecord" :key="index">
+							<view class="record-info">
+								<RecordInfo ref="recordTitle" :data="recordInfo"></RecordInfo>
+							</view>
+							<view class="" v-for="(item,index) in currentRecord[0].pearRecord" :key="index">
 								<RecordCard @deleteOneRecord="onHandleDeleteOneRecord" :parentData="item"
 									:ref='"editRecord"+index'></RecordCard>
 							</view>
@@ -50,12 +54,13 @@
 				</view>
 				<view class="has-template-record" v-if="templateRecord.length > 0">
 					<view class="template-container" v-for="item in templateRecord" :key="item._id">
-						<RecordTemplate :data="item" @applyTemplate="onHandleApplyTemplate" @deleteTemplate = "onHandleDeleteTemplate"></RecordTemplate>
+						<RecordTemplate :data="item" @applyTemplate="onHandleApplyTemplate"
+							@deleteTemplate="onHandleDeleteTemplate"></RecordTemplate>
 					</view>
 				</view>
 			</uni-card>
 		</view>
-<!-- 		<view class="show-record">
+		<!-- 		<view class="show-record">
 			<ShowRecord></ShowRecord>
 					<uni-fab @fabClick="onHandleFabClick"></uni-fab>
 		</view> -->
@@ -65,18 +70,21 @@
 <script>
 	import RecordCard from "@/components/RecordCard.vue";
 	import RecordTemplate from "@/components/RecordTemplate/RecordTemplate.vue";
-	import ShowRecord from "@/components/ShowRecord/ShowRecord.vue"
+	import ShowRecord from "@/components/ShowRecord/ShowRecord.vue";
+	import RecordInfo from "@/components/RecordInfo/RecordInfo.vue";
 	export default {
 		components: {
 			RecordCard,
 			RecordTemplate,
-			ShowRecord
+			ShowRecord,
+			RecordInfo
 		},
 		data() {
 			return {
 				currentRecord: {}, //当前正在吃的记录
-				tempRecord: {},
-				templateRecord:[],//模板记录
+				// tempRecord: {},
+				templateRecord: [], //模板记录
+				recordInfo:{},//记录的基本信息
 			}
 		},
 		// 下拉获取信息
@@ -91,12 +99,12 @@
 				});
 			}, 1000)
 		},
-		watch: {
-			currentRecord: function(newData, oldData) {
-				this.tempRecord = JSON.parse(JSON.stringify(newData));
-				// console.log(this.tempRecord[0].pearRecord === this.currentRecord[0].pearRecord)
-			}
-		},
+		// watch: {
+		// 	currentRecord: function(newData, oldData) {
+		// 		// this.tempRecord = JSON.parse(JSON.stringify(newData));
+		// 		// console.log(this.tempRecord[0].pearRecord === this.currentRecord[0].pearRecord)
+		// 	}
+		// },
 		async created() {
 			// console.log(this.$refs.test1.getRecordCardData())
 			await this.getCurrentRecord();
@@ -104,14 +112,14 @@
 		},
 		methods: {
 			// 获取模板信息
-			async getTemplateRecord(){
+			async getTemplateRecord() {
 				const res = await uniCloud.callFunction({
-					name:"get_template_record",
-					data:{
-						user_openid:this.$store.state.userInfo.userInfo.openid,
+					name: "get_template",
+					data: {
+						openid: this.$store.state.userInfo.userInfo.openid,
 					}
 				})
-				
+
 				this.templateRecord = res.result.data;
 			},
 			// 打开今日吃药的抽屉
@@ -134,12 +142,17 @@
 						openid: this.$store.state.userInfo.userInfo.openid,
 					}
 				});
+				// console.log(res)
 				this.currentRecord = res.result.data;
+				this.recordInfo.name = this.currentRecord[0].name;
+				this.recordInfo.avatar = this.currentRecord[0].avatar;
+				this.recordInfo.createDate = this.currentRecord[0].createDate;
+				this.recordInfo.description = this.currentRecord[0].description;
 			},
 			// 取消或者结束预览
 			onHandleCancel() {
 				this.$refs.showDetails.close();
-				this.tempRecord = JSON.parse(JSON.stringify(this.currentRecord));
+				// this.tempRecord = JSON.parse(JSON.stringify(this.currentRecord));
 			},
 			// 确认修改信息
 			async onHandleConfirmModification() {
@@ -151,7 +164,17 @@
 							// 确认修改
 							const newData = [];
 							// 将修改后的信息保存下来
-							for (let i = 0; i < this.tempRecord[0].pearRecord.length; i++) {
+							let tempTitle = this.$refs.recordTitle.getRecordInfoData();
+							// console.log(tempTitle)
+							if(tempTitle.name === ""){
+								uni.showToast({
+									title: '请输入记录名称',
+									icon: 'error'
+								})
+								return;
+							}
+							// console.log(this.currentRecord[0].pearRecord)
+							for (let i = 0; i < this.currentRecord[0].pearRecord.length; i++) {
 								const temp = this.$refs['editRecord' + i][0]
 									.getRecordCardData(); //获取每一个RecordCard的数据
 								// console.log(temp)
@@ -159,6 +182,14 @@
 									// 药名为空
 									uni.showToast({
 										title: '请输入药品名称',
+										icon: 'error'
+									})
+									return;
+								}
+								if (temp.drugAvatar === '') {
+									// 药名为空
+									uni.showToast({
+										title: '请输入药品图片',
 										icon: 'error'
 									})
 									return;
@@ -179,14 +210,24 @@
 									})
 									return;
 								}
-								newData.push(temp);
+								this.currentRecord[0].pearRecord[i] = temp;
 							}
 							// 修改数据库
+							
 							const res = await uniCloud.callFunction({
-								name: "edit_record",
+								name: "update_record",
 								data: {
 									id: this.currentRecord[0]._id,
-									recordData: newData
+									data: {
+										openid: this.$store.state.userInfo.userInfo.openid,
+										name:tempTitle.name,
+										avatar:tempTitle.avatar,
+										createDate:this.currentRecord[0].createDate,
+										is_overdue:false,
+										pearRecord:this.currentRecord[0].pearRecord,
+										successEat:this.currentRecord[0].successEat,
+										description:tempTitle.description
+									}
 								}
 							});
 							uni.showToast({
@@ -224,7 +265,7 @@
 					drugDayEatCount: "",
 				}; //药品信息
 
-				this.tempRecord[0].pearRecord.push(temp);
+				this.currentRecord[0].pearRecord.push(temp);
 			},
 			// 新增一个记录
 			onHandleNewRecord() {
@@ -238,50 +279,57 @@
 			},
 			// 删除一个药品
 			async onHandleDeleteOneRecord(id) {
+				if(this.currentRecord[0].pearRecord.length === 1){
+					uni.showToast({
+						title:"至少保留一个药品的记录",
+						icon:"none"
+					})
+					return;
+				}
 				// const res = await 
-				this.tempRecord[0].pearRecord = this.tempRecord[0].pearRecord.filter(item => {
+				this.currentRecord[0].pearRecord = this.currentRecord[0].pearRecord.filter(item => {
 					return item.pearId !== id
 				})
 				const res = await uniCloud.callFunction({
 					name: "delete_oneDrugRecord",
 					data: {
-						_id: this.tempRecord[0]._id,
-						newData: this.tempRecord[0].pearRecord,
+						_id: this.currentRecord[0]._id,
+						newData: this.currentRecord[0].pearRecord,
 					}
 				});
 				uni.showToast({
 					title: res.result.msg,
 					icon: "none"
 				});
-				this.getCurrentRecord();
+				await this.getCurrentRecord();
 			},
 			// 应用一个模板
-			async  onHandleApplyTemplate(id){
+			async onHandleApplyTemplate(id) {
 				const res = await uniCloud.callFunction({
-					name:"set_apply_record",
-					data:{
-						user_openid:this.$store.state.userInfo.userInfo.openid,
-						newid:id
+					name: "set_apply_record",
+					data: {
+						user_openid: this.$store.state.userInfo.userInfo.openid,
+						newid: id
 					}
 				});
 				uni.showToast({
-					title:res.result.mag,
+					title: res.result.mag,
 				});
 				// 重新获取数据
 				await this.getCurrentRecord();
 				await this.getTemplateRecord();
 			},
 			// 删除一个模板
-			async onHandleDeleteTemplate(id){
+			async onHandleDeleteTemplate(id) {
 				const res = await uniCloud.callFunction({
-					name:"delete_record",
-					data:{
+					name: "delete_record",
+					data: {
 						id,
 					}
 				});
 				uni.showToast({
-					title:res.result.msg,
-					icon:"none"
+					title: res.result.msg,
+					icon: "none"
 				})
 				// 重新获取数据
 				await this.getCurrentRecord();
