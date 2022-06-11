@@ -37,6 +37,8 @@
 									@click="onHandleCancel">取消</button>
 								<button type="primary" size="mini" class="button-confirm"
 									@click="onHandleConfirmModification">确认</button>
+								<button type="default" size="mini" class="button-end"
+									@click="onHandleEndModification">结束当前记录</button>
 							</view>
 						</scroll-view>
 					</view>
@@ -81,7 +83,7 @@
 		},
 		data() {
 			return {
-				currentRecord: {}, //当前正在吃的记录
+				currentRecord: [], //当前正在吃的记录
 				// tempRecord: {},
 				templateRecord: [], //模板记录
 				recordInfo:{},//记录的基本信息
@@ -109,6 +111,8 @@
 			// console.log(this.$refs.test1.getRecordCardData())
 			await this.getCurrentRecord();
 			await this.getTemplateRecord();
+			
+			// console.log(this.currentRecord)
 		},
 		methods: {
 			// 获取模板信息
@@ -143,16 +147,53 @@
 					}
 				});
 				// console.log(res)
-				this.currentRecord = res.result.data;
-				this.recordInfo.name = this.currentRecord[0].name;
-				this.recordInfo.avatar = this.currentRecord[0].avatar;
-				this.recordInfo.createDate = this.currentRecord[0].createDate;
-				this.recordInfo.description = this.currentRecord[0].description;
+				if(res.result.data.length > 0){
+					this.currentRecord = res.result.data;
+					this.recordInfo.name = this.currentRecord[0].name;
+					this.recordInfo.avatar = this.currentRecord[0].avatar;
+					this.recordInfo.createDate = this.currentRecord[0].createDate;
+					this.recordInfo.description = this.currentRecord[0].description;
+				}
 			},
 			// 取消或者结束预览
 			onHandleCancel() {
 				this.$refs.showDetails.close();
+				this.getCurrentRecord();
 				// this.tempRecord = JSON.parse(JSON.stringify(this.currentRecord));
+			},
+			// 结束当前的记录
+			onHandleEndModification(){
+				uni.showModal({
+					title:"提示",
+					content:"确定要结束当前的记录？",
+					success: async (res) => {
+						if(res.confirm){
+							const res = await uniCloud.callFunction({
+								name: "update_record",
+								data: {
+									id: this.currentRecord[0]._id,
+									data: {
+										openid: this.$store.state.userInfo.userInfo.openid,
+										name:this.currentRecord[0].name,
+										avatar:this.currentRecord[0].avatar,
+										createDate:this.currentRecord[0].createDate,
+										is_overdue:true,
+										pearRecord:this.currentRecord[0].pearRecord,
+										successEat:this.currentRecord[0].successEat,
+										description:this.currentRecord[0].description
+									}
+								}
+							});
+							// 自动关闭弹框，并且重新请求数据
+							this.onHandleCancel();
+						}else if(res.cancel){
+							uni.showToast({
+								title:"取消结束当前记录",
+								icon:"none"
+							})
+						}
+					}
+				})
 			},
 			// 确认修改信息
 			async onHandleConfirmModification() {
