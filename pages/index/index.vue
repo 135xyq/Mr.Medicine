@@ -50,7 +50,7 @@
 			<!-- <RecordCard :parentData="{}" @deleteOneRecord="onHandleDeleteOneRecord"></RecordCard> -->
 		</view>
 		<view class="template">
-			<uni-card title="我的模板">
+			<uni-card title="我的模板" spacing="0" padding="0">
 				<view class="no-template-record" v-if="templateRecord.length ===0">
 					暂无内容
 				</view>

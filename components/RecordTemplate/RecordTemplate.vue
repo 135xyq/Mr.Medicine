@@ -1,5 +1,14 @@
 <template>
-	<uni-card class="card-container" :extra="'创建日期:' + formatDate(data.createDate)" @click="onHandleShowDrawer">
+	<uni-card :border="false" margin="0" class="card-container" :title="data.name"  :extra="formatDate(data.createDate)" @click="onHandleShowDrawer">
+		<view class="img" >
+			<img slot="cover" :src="data.avatar" alt="">
+		</view>
+		<view class="">
+			描述信息：{{data.description}}
+		</view>
+		<view class="card-info">
+			药品种类：{{data.pearRecord.length}} 种
+		</view>
 		<view class="buttons">
 			<button class="delete-button" type="default" size="mini" @click="onHandleDetele">
 				<text>删除</text>
@@ -7,9 +16,6 @@
 			<button class="apply-button" type="primary" size="mini" @click="onHandleApply">
 				<text>应用</text>
 			</button>
-		</view>
-		<view class="card-info">
-			药品种类：{{data.pearRecord.length}} 种
 		</view>
 		<view class="drawer">
 			<uni-drawer ref="showDrawer" mode="right" :mask-click="true" width="350">
