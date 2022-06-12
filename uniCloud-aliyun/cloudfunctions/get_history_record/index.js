@@ -10,7 +10,7 @@ exports.main = async (event, context) => {
 	const res = await db.collection("record").where({
 		openid,
 		is_overdue:true,
-	}).get();
+	}).orderBy("createDate", "desc").get();
 	//返回数据给客户端
 	return {
 		code:0,
