@@ -126,9 +126,12 @@
 		// },
 		async created() {
 			// console.log(this.$refs.test1.getRecordCardData())
+			uni.showLoading({
+				title:"正在获取数据"
+			})
 			await this.getCurrentRecord();
 			await this.getTemplateRecord();
-
+			uni.hideLoading();
 			// console.log(this.currentRecord)
 		},
 		methods: {
