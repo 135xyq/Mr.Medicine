@@ -89,6 +89,19 @@
 				recordInfo: {}, //记录的基本信息
 			}
 		},
+		onLoad(){
+			if(!this.$store.state.userInfo.userInfo){
+				// 没有登录
+				uni.showToast({
+					title:"请登录",
+					icon:"none"
+				})
+				
+				uni.switchTab({
+					url:"/pages/self/self"
+				})
+			}
+		},
 		async onShow() {
 			await this.getCurrentRecord();
 			await this.getTemplateRecord();

@@ -1,35 +1,34 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
-			"path": "pages/hsitoryPage/hsitoryPage",
-			"style": {
-				"navigationBarTitleText": "历史记录",
-				"enablePullDownRefresh": false
-			}
-		
-		},{
-			"path": "pages/self/self",
-			"style": {
-				"navigationBarTitleText": "个人中心",
-				"enablePullDownRefresh": false
-			}
-		
-		},
-	{
 			"path": "pages/index/index",
 			"style": {
 				"navigationBarTitleText": "首页",
 				"enablePullDownRefresh": true
 			}
-		},{
+		}, {
+			"path": "pages/self/self",
+			"style": {
+				"navigationBarTitleText": "个人中心",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/hsitoryPage/hsitoryPage",
+			"style": {
+				"navigationBarTitleText": "历史记录",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
 			"path": "pages/readInfo/readInfo",
 			"style": {
 				"navigationBarTitleText": "药品说明书",
 				"enablePullDownRefresh": false
 			}
-		
+
 		},
- {
+		{
 			"path": "pages/feedback/feedback",
 			"style": {
 				"navigationBarTitleText": "问题反馈",
@@ -57,26 +56,22 @@
 				"enablePullDownRefresh": false
 			}
 
+		}, {
+			"path": "pages/drug_user_info/drug_user_info",
+			"style": {
+				"navigationBarTitleText": "说明书详细内容",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/historyDetail/historyDetail",
+			"style": {
+				"navigationBarTitleText": "历史记录详情页",
+				"enablePullDownRefresh": false
+			}
+
 		}
-	    ,{
-            "path" : "pages/drug_user_info/drug_user_info",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "说明书详细内容",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/historyDetail/historyDetail",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "历史记录详情页",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-    ],
+	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",

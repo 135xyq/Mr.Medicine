@@ -1,5 +1,6 @@
 import App from './App'
 import store from './store'
+// import "./interceptor.js"
 
 // #ifndef VUE3
 import Vue from 'vue'
