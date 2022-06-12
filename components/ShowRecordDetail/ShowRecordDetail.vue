@@ -21,17 +21,21 @@
 		},
 		data() {
 			return {
-				templateInfo:{
+			};
+		},
+		computed:{
+			templateInfo(){
+				return{
 					name:this.data.name,
 					avatar:this.data.avatar,
 					createDate:this.data.createDate,
 					description:this.data.description
 				}
-			};
-		},
-		created(){
-			// console.log(this.templateInfo)
+			}
 		}
+		// created() {
+		// 	console.log(this.data)
+		// }
 	}
 </script>
 

@@ -37,13 +37,18 @@
 		props: ["data"],
 		data() {
 			return {
-				dataInfo: {
+
+			};
+		},
+		computed:{
+			dataInfo(){
+				return{
 					avatar: this.data.avatar || "",
 					name: this.data.name || "",
 					createDate: this.data.createDate || new Date().getTime(),
 					description: this.data.description || ""
 				}
-			};
+			}
 		},
 		methods: {
 			formateDate,
