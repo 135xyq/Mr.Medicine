@@ -1,36 +1,35 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
-			"path": "pages/index/index",
-			"style": {
-				"navigationBarTitleText": "首页",
-				"enablePullDownRefresh": true
-			}
-		},{
 			"path": "pages/self/self",
 			"style": {
 				"navigationBarTitleText": "个人中心",
 				"enablePullDownRefresh": false
 			}
 		
-		},{
-			"path": "pages/history/history",
-			"style": {
-				"navigationBarTitleText": "药品说明书",
-				"enablePullDownRefresh": false
-			}
-		
 		},
-
-
 		{
 			"path": "pages/hsitoryPage/hsitoryPage",
 			"style": {
 				"navigationBarTitleText": "历史记录",
 				"enablePullDownRefresh": false
 			}
-
-		}, {
+		
+		},{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "首页",
+				"enablePullDownRefresh": true
+			}
+		},{
+			"path": "pages/readInfo/readInfo",
+			"style": {
+				"navigationBarTitleText": "药品说明书",
+				"enablePullDownRefresh": false
+			}
+		
+		},
+ {
 			"path": "pages/feedback/feedback",
 			"style": {
 				"navigationBarTitleText": "问题反馈",
@@ -68,6 +67,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/historyDetail/historyDetail",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "历史记录详情页",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
@@ -86,7 +94,7 @@
 			"selectedIconPath": "static/img/home-active.png",
 			"text": "首页"
 		}, {
-			"pagePath": "pages/history/history",
+			"pagePath": "pages/readInfo/readInfo",
 			"iconPath": "static/img/read.png",
 			"selectedIconPath": "static/img/read-active.png",
 			"text": "药品说明书"
