@@ -1,6 +1,7 @@
 <template>
-	<uni-card :border="false" class="card-container" :title="data.name"  :extra="formatDate(data.createDate)" @click="onHandleShowDrawer">
-		<view class="img" >
+	<uni-card :border="false" class="card-container" :title="data.name" :extra="formatDate(data.createDate)"
+		@click="onHandleShowDrawer">
+		<view class="img">
 			<img slot="cover" class="image" :src="data.avatar" alt="">
 		</view>
 		<view class="description">
@@ -28,7 +29,7 @@
 				</scroll-view>
 			</uni-drawer>
 		</view>
-		
+
 	</uni-card>
 </template>
 
@@ -36,7 +37,7 @@
 	import formatDate from "@/utils/formateDate.js";
 	import ShowRecordDetail from "@/components/ShowRecordDetail/ShowRecordDetail.vue";
 	export default {
-		components:{
+		components: {
 			ShowRecordDetail,
 		},
 		name: "RecordTemplate",
@@ -46,56 +47,58 @@
 
 			};
 		},
-		methods:{
+		methods: {
 			formatDate,
 			// 删除一个模板
-			onHandleDetele(){
+			onHandleDetele() {
 				uni.showModal({
-					title:"提示",
-					content:"确定删除这个模板",
+					title: "提示",
+					content: "确定删除这个模板",
 					success: (res) => {
-						if(res.confirm){
-							this.$emit("deleteTemplate",this.data._id);
-						}else if(res.cancel){
+						if (res.confirm) {
+							this.$emit("deleteTemplate", this.data._id);
+						} else if (res.cancel) {
 							uni.showToast({
-								title:"取消删除",
-								icon:"none"
+								title: "取消删除",
+								icon: "none"
 							})
+							this.$refs.showDrawer.close();
 						}
 					}
 				})
-				
+
 			},
 			//应用模板
-			onHandleApply(){
+			onHandleApply() {
 				uni.showModal({
-					title:"提示",
-					content:"直接应用此模板会覆盖原有的计划",
+					title: "提示",
+					content: "直接应用此模板会覆盖原有的计划",
 					success: (res) => {
-						if(res.confirm){
-							this.$emit("applyTemplate",this.data._id);
-						}else if(res.cancel){
+						if (res.confirm) {
+							this.$emit("applyTemplate", this.data._id);
+							this.$refs.showDrawer.close();
+						} else if (res.cancel) {
 							uni.showToast({
-								title:"取消应用",
-								icon:"none"
+								title: "取消应用",
+								icon: "none"
 							})
 						}
 					}
 				})
 			},
 			// 显示详细信息
-			onHandleShowDrawer(){
+			onHandleShowDrawer() {
 				this.$refs.showDrawer.open()
 			},
 			// 关闭
-			onHandleCloseDrawer(){
+			onHandleCloseDrawer() {
 				this.$refs.showDrawer.close()
 			},
 			// 修改模板
-			onHandleEdit(){
+			onHandleEdit() {
 				uni.showToast({
-					title:"功能待完善",
-					icon:"none"
+					title: "功能待完善",
+					icon: "none"
 				})
 			}
 		}
@@ -104,5 +107,4 @@
 
 <style scoped lang="less">
 	@import "./RecordTemplate.less";
-
 </style>

@@ -346,11 +346,12 @@
 			},
 			// 应用一个模板
 			async onHandleApplyTemplate(id) {
+				// console.log(id)
 				const res = await uniCloud.callFunction({
-					name: "set_apply_record",
+					name: "apply_template",
 					data: {
-						user_openid: this.$store.state.userInfo.userInfo.openid,
-						newid: id
+						openid: this.$store.state.userInfo.userInfo.openid,
+						id: id
 					}
 				});
 				uni.showToast({
