@@ -5,12 +5,12 @@
 const db = uniCloud.database();
 exports.main = async (event, context) => {
 	//event为客户端上传的参数
-	const {user_openid,newid} = event;
+	const {openid,newid} = event;
 	const collection = db.collection("record");
 	// 先将原来的结束
 	// 在替换新的
 	const res = await collection.where({
-		user_openid,
+		openid,
 		is_overdue:false
 	}).get();
 	// 如果已经有开始的记录，则关闭
@@ -22,7 +22,6 @@ exports.main = async (event, context) => {
 	}
 	const result = await collection.doc(newid).update({
 		is_overdue:false,
-		// is_template:false
 	})
 	
 	// console.log(result)

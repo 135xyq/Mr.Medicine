@@ -86,8 +86,12 @@
 				currentRecord: [], //当前正在吃的记录
 				// tempRecord: {},
 				templateRecord: [], //模板记录
-				recordInfo:{},//记录的基本信息
+				recordInfo: {}, //记录的基本信息
 			}
+		},
+		async onShow() {
+			await this.getCurrentRecord();
+			await this.getTemplateRecord();
 		},
 		// 下拉获取信息
 		async onPullDownRefresh() {
@@ -111,7 +115,7 @@
 			// console.log(this.$refs.test1.getRecordCardData())
 			await this.getCurrentRecord();
 			await this.getTemplateRecord();
-			
+
 			// console.log(this.currentRecord)
 		},
 		methods: {
@@ -147,7 +151,7 @@
 					}
 				});
 				// console.log(res)
-				if(res.result.data.length > 0){
+				if (res.result.data.length > 0) {
 					this.currentRecord = res.result.data;
 					this.recordInfo.name = this.currentRecord[0].name;
 					this.recordInfo.avatar = this.currentRecord[0].avatar;
@@ -162,34 +166,34 @@
 				// this.tempRecord = JSON.parse(JSON.stringify(this.currentRecord));
 			},
 			// 结束当前的记录
-			onHandleEndModification(){
+			onHandleEndModification() {
 				uni.showModal({
-					title:"提示",
-					content:"确定要结束当前的记录？",
+					title: "提示",
+					content: "确定要结束当前的记录？",
 					success: async (res) => {
-						if(res.confirm){
+						if (res.confirm) {
 							const res = await uniCloud.callFunction({
 								name: "update_record",
 								data: {
 									id: this.currentRecord[0]._id,
 									data: {
 										openid: this.$store.state.userInfo.userInfo.openid,
-										name:this.currentRecord[0].name,
-										avatar:this.currentRecord[0].avatar,
-										createDate:this.currentRecord[0].createDate,
-										is_overdue:true,
-										pearRecord:this.currentRecord[0].pearRecord,
-										successEat:this.currentRecord[0].successEat,
-										description:this.currentRecord[0].description
+										name: this.currentRecord[0].name,
+										avatar: this.currentRecord[0].avatar,
+										createDate: this.currentRecord[0].createDate,
+										is_overdue: true,
+										pearRecord: this.currentRecord[0].pearRecord,
+										successEat: this.currentRecord[0].successEat,
+										description: this.currentRecord[0].description
 									}
 								}
 							});
 							// 自动关闭弹框，并且重新请求数据
 							this.onHandleCancel();
-						}else if(res.cancel){
+						} else if (res.cancel) {
 							uni.showToast({
-								title:"取消结束当前记录",
-								icon:"none"
+								title: "取消结束当前记录",
+								icon: "none"
 							})
 						}
 					}
@@ -207,7 +211,7 @@
 							// 将修改后的信息保存下来
 							let tempTitle = this.$refs.recordTitle.getRecordInfoData();
 							// console.log(tempTitle)
-							if(tempTitle.name === ""){
+							if (tempTitle.name === "") {
 								uni.showToast({
 									title: '请输入记录名称',
 									icon: 'error'
@@ -254,20 +258,20 @@
 								this.currentRecord[0].pearRecord[i] = temp;
 							}
 							// 修改数据库
-							
+
 							const res = await uniCloud.callFunction({
 								name: "update_record",
 								data: {
 									id: this.currentRecord[0]._id,
 									data: {
 										openid: this.$store.state.userInfo.userInfo.openid,
-										name:tempTitle.name,
-										avatar:tempTitle.avatar,
-										createDate:this.currentRecord[0].createDate,
-										is_overdue:false,
-										pearRecord:this.currentRecord[0].pearRecord,
-										successEat:this.currentRecord[0].successEat,
-										description:tempTitle.description
+										name: tempTitle.name,
+										avatar: tempTitle.avatar,
+										createDate: this.currentRecord[0].createDate,
+										is_overdue: false,
+										pearRecord: this.currentRecord[0].pearRecord,
+										successEat: this.currentRecord[0].successEat,
+										description: tempTitle.description
 									}
 								}
 							});
@@ -320,10 +324,10 @@
 			},
 			// 删除一个药品
 			async onHandleDeleteOneRecord(id) {
-				if(this.currentRecord[0].pearRecord.length === 1){
+				if (this.currentRecord[0].pearRecord.length === 1) {
 					uni.showToast({
-						title:"至少保留一个药品的记录",
-						icon:"none"
+						title: "至少保留一个药品的记录",
+						icon: "none"
 					})
 					return;
 				}

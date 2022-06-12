@@ -1,0 +1,7 @@
+{
+  "name": "apply_record",
+  "dependencies": {},
+  "extensions": {
+    "uni-cloud-jql": {}
+  }
+}

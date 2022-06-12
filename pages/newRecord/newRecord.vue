@@ -1,6 +1,9 @@
 <template>
 	<view>
 		<view class="add-container">
+			<view class="basic-info">
+				<RecordInfo :data="basicInfo" ref="newRecordInfo"></RecordInfo>
+			</view>
 			<view v-for="(item,index) in data.pearRecord" :key="index">
 				<RecordCard :parentData="item" @deleteOneRecord="onHandleDeleteOneRecord" :ref='"editRecord"+index'>
 				</RecordCard>
@@ -20,20 +23,27 @@
 </template>
 
 <script>
-	import RecordCard from "@/components/RecordCard.vue"
+	import RecordCard from "@/components/RecordCard.vue";
+	import RecordInfo from "@/components/RecordInfo/RecordInfo.vue";
 	export default {
 		components: {
-			RecordCard
+			RecordCard,
+			RecordInfo
 		},
 		data() {
 			return {
+				tempInfo:{},
+				basicInfo:{
+					name:"",
+					avatar:"",
+					description:"",
+					createDate:new Date().getTime(),
+				},
 				data: {
-					user_openid: '',
-					createDate: '',
+					openid: '',
 					is_overdue: true,
-					is_template: false,
 					pearRecord: [{
-						// pearId
+						pearId:"",
 						drugName: "",
 						drugAvatar: "",
 						drugPearCount: {
@@ -55,17 +65,13 @@
 			}
 		},
 		created() {
-			this.data.user_openid = this.$store.state.userInfo.userInfo.openid; //获取用户信息
-			this.data.createDate = new Date().getTime();
+			this.data.openid = this.$store.state.userInfo.userInfo.openid; //获取用户信息
 		},
 		methods: {
-			test() {
-				uni.navigateBack()
-			},
 			// 新增一个药品
 			newAddOneRecord() {
 				const temp = {
-					// pearId: '',
+					pearId: '',
 					drugName: "",
 					drugAvatar: "",
 					drugPearCount: {
@@ -114,8 +120,27 @@
 				})
 
 			},
-			// 直接保存为模板
-			async onHandleConfirmModification() {
+			// 获取填写的信息
+			getAllData(){
+				// 获取基本信息
+				this.flag = true;
+				this.tempInfo = this.$refs.newRecordInfo.getRecordInfoData();
+				if(this.tempInfo.name === ""){
+					uni.showToast({
+						title: '请填写记录名称',
+						icon: "none"
+					});
+					this.flag = false;
+					return;
+				}
+				if(this.tempInfo.avatar === ""){
+					uni.showToast({
+						title: '请填写记录图片',
+						icon: "none"
+					});
+					this.flag = false;
+					return;
+				}
 				for (let i = 0; i < this.data.pearRecord.length; i++) {
 					const temp = this.$refs['editRecord' + i][0].getRecordCardData();
 					if (temp.drugName === '') {
@@ -136,29 +161,48 @@
 					}
 					this.data.pearRecord[i] = temp;
 				}
-				this.data.is_template = true;
-				const res = await uniCloud.callFunction({
-					name: 'set_record',
-					data: {
-						...this.data,
-					}
-				})
-				uni.showToast({
-					title: res.result.msg,
-				})
-				this.newId = res.result.data.id;
+			},
+			// 直接保存为模板
+			async onHandleConfirmModification() {
+				this.getAllData();
+				// console.log(this.data)
+				// console.log(tempInfo)
+				if(this.flag){
+					// 信息填写完整
+					const res = await uniCloud.callFunction({
+						name: 'set_template',
+						data: {
+							...this.data,
+							...this.tempInfo
+						}
+					})
+					uni.showToast({
+						title: res.result.msg,
+					})
+					this.newId = res.result.data.id;
+					setTimeout(()=>{
+						uni.navigateBack();
+					},1000)
+				}
 			},
 			// 直接应用
 			async onHandleApplyModification() {
-				await this.onHandleConfirmModification();
+				this.getAllData();//获取所有数据
 				if (this.flag) {
 					// 内容填写完整
+					this.data.is_overdue = false;
 					const res = await uniCloud.callFunction({
-						name: "set_apply_record",
+						name: "apply_record",
 						data: {
-							user_openid: this.$store.state.userInfo.userInfo.openid,
-							newid: this.newId
+							openid: this.$store.state.userInfo.userInfo.openid,
+							data:{
+								...this.data,
+								...this.tempInfo
+							}
 						}
+					})
+					uni.showToast({
+						title:"应用成功"
 					})
 					setTimeout(() => {
 						uni.navigateBack();
