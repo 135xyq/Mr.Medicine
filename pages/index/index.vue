@@ -66,6 +66,9 @@
 			<ShowRecord></ShowRecord>
 					<uni-fab @fabClick="onHandleFabClick"></uni-fab>
 		</view> -->
+		<view class="daily-data" v-if="currentRecord.length > 0">
+			<DailyData :data="currentRecord[0]"></DailyData>
+		</view>
 	</view>
 </template>
 
@@ -74,12 +77,14 @@
 	import RecordTemplate from "@/components/RecordTemplate/RecordTemplate.vue";
 	import ShowRecord from "@/components/ShowRecord/ShowRecord.vue";
 	import RecordInfo from "@/components/RecordInfo/RecordInfo.vue";
+	import DailyData from "@/components/DailyData/DailyData.vue"
 	export default {
 		components: {
 			RecordCard,
 			RecordTemplate,
 			ShowRecord,
-			RecordInfo
+			RecordInfo,
+			DailyData
 		},
 		data() {
 			return {
@@ -125,6 +130,7 @@
 		// 	}
 		// },
 		async created() {
+			// console.log(this.$store.state.userInfo.userInfo.openid)
 			// console.log(this.$refs.test1.getRecordCardData())
 			uni.showLoading({
 				title:"正在获取数据"
