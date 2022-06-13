@@ -1,0 +1,44 @@
+.daily-data-container{
+	width: 300px;
+	
+	.popup-container :deep(.uni-popup__wrapper) {
+        width: 300px;
+    }
+	
+	.swiper{
+		// margin-top: 20px;
+		width: 300px;
+		height: 450px;
+		text-align: center;
+		.show-complete{
+			text-align: center;
+			width:150px;
+			color:#fff;
+			height: 30px;
+			line-height: 30px;
+			background: green;
+			transform: rotate(-30deg) translate(-20px,0);
+			&.no-eat{
+							background: red;
+			}
+		}
+		.drug-img{
+			width: 240px;
+		}
+		.drug-name{
+			font-weight: bold;
+			margin: 20px 0;
+		}
+		
+		.eat-count{
+			font-weight: bold;
+		}
+		
+		.btns{
+			margin-top: 20px;
+			.previous{
+				margin-right: 20px;
+			}
+		}
+	}
+}
