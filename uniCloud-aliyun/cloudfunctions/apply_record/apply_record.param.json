@@ -25,7 +25,8 @@
 		            "unit": "盒",
 		            "pearCount": 12,
 		            "pearUnit": "粒"
-		        }
+		        },
+				"successEat":0
 		    },
 		    {
 		        "pearId": "1654580681597d52c",
@@ -57,7 +58,8 @@
 		            "unit": "盒",
 		            "pearCount": 12,
 		            "pearUnit": "粒"
-		        }
+		        },
+				"successEat":0
 		    },
 		    {
 		        "pearId": "165458068162064aa",
@@ -73,7 +75,8 @@
 		            "unit": "盒",
 		            "pearCount": 12,
 		            "pearUnit": "粒"
-		        }
+		        },
+				"successEat":0
 		    }
 		]
 	}

@@ -138,7 +138,7 @@
 			await this.getCurrentRecord();
 			await this.getTemplateRecord();
 			uni.hideLoading();
-			// console.log(this.currentRecord)
+			console.log(this.currentRecord)
 		},
 		methods: {
 			// 获取模板信息
@@ -328,8 +328,9 @@
 					drugAvatar: "",
 					drugPearCount: {
 						count: "",
-						unit: ""
+						unit: "",	
 					},
+					successEat:0,
 					drugAllCount: {
 						count: "",
 						unit: "",

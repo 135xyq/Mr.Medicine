@@ -23,7 +23,8 @@
 		</view>
 		<view class="descrption">
 			<text class="descrption-text">记录描述</text>
-			<uni-easyinput class="descrption-content" type="textarea" autoHeight v-model="dataInfo.description" placeholder="请输入记录的描述或备注">
+			<uni-easyinput class="descrption-content" type="textarea" autoHeight v-model="dataInfo.description"
+				placeholder="请输入记录的描述或备注">
 			</uni-easyinput>
 			</uni-section>
 		</view>
@@ -37,18 +38,13 @@
 		props: ["data"],
 		data() {
 			return {
-
-			};
-		},
-		computed:{
-			dataInfo(){
-				return{
+				dataInfo: {
 					avatar: this.data.avatar || "",
 					name: this.data.name || "",
 					createDate: this.data.createDate || new Date().getTime(),
 					description: this.data.description || ""
 				}
-			}
+			};
 		},
 		methods: {
 			formateDate,
@@ -73,7 +69,9 @@
 										10000))
 									.toString(16)) + url.substr(url.lastIndexOf('.')),
 							});
+
 							this.dataInfo.avatar = result.filePath;
+							// console.log(this.dataInfo.avatar)
 						}
 					}
 				})
@@ -114,7 +112,8 @@
 
 		.create-time {
 			margin: 20px;
-			.create-time-text{
+
+			.create-time-text {
 				margin-right: 20px;
 			}
 		}
@@ -140,7 +139,7 @@
 			height: 100px;
 			// width: 100px;
 		}
-		
+
 		.close-icon {
 			width: 40rpx;
 			height: 40rpx;
@@ -158,17 +157,21 @@
 				right: 2px;
 			}
 		}
-		.descrption{
+
+		.descrption {
 			margin: 20px;
-			.descrption-text{
+
+			.descrption-text {
 				float: left;
 				margin-right: 20px;
 			}
-			.descrption-content{
+
+			.descrption-content {
 				float: left;
 				width: 70%;
 			}
-			&::after{
+
+			&::after {
 				content: "";
 				display: block;
 				clear: both;

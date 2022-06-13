@@ -57,8 +57,9 @@
 							pearUnit: ""
 						},
 						drugDayEatCount: "",
+						successEat: 0
 					}],
-					successEat: 0
+					
 				},
 				flag: true, //内容填写完整
 				newId: '', //新增的ID
@@ -76,8 +77,10 @@
 					drugAvatar: "",
 					drugPearCount: {
 						count: "",
-						unit: ""
+						unit: "",
+						
 					},
+					successEat:0,
 					drugAllCount: {
 						count: "",
 						unit: "",

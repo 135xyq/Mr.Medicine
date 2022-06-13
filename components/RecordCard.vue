@@ -57,6 +57,7 @@
 				a: '1',
 				drugName: this.parentData.drugName || '', //药品名称
 				drugAvatar: this.parentData.drugAvatar || '', //药品图片
+				successEat:this.parentData.successEat ||0,//药品吃过的次数
 				drugPearCount: this.parentData.pearCount || {
 					count: '',
 					unit: ''
@@ -186,6 +187,7 @@
 					drugPearCount: this.drugPearCount, //药品剂量
 					drugDayEatCount: this.drugDayEatCount, //一日几次
 					drugAllCount: this.drugAllCount, //药品总量
+					successEat:this.successEat,//吃过多少次
 					// tempImage: this.tempImg,
 				}
 			},

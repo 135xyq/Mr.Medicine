@@ -34,6 +34,7 @@
 							v-if="currentIndex ===data.pearRecord.length - 1">完成吃药</button>
 					</view>
 				</swiper-item>
+				<swiper-item  @touchmove.stop>qw3eqw</swiper-item>
 			</swiper>
 		</uni-popup>
 	</view>
@@ -41,6 +42,7 @@
 
 <script>
 	import getAllMinutes from "@/utils/getMinutes.js";
+	import computerLeftoverDrug from"@/utils/computerLftoverDrugs.js"
 	export default {
 		name: "DailyData",
 		props: ["data"],
@@ -100,7 +102,8 @@
 			// 完成吃药
 			onHandleCompleteEatDrug() {
 				this.hasEat.push(this.currentIndex);
-				this.$refs.popup.close(); //吃药完成关闭
+				this.currentIndex++;
+				// this.$refs.popup.close(); //吃药完成关闭
 			},
 			//获取用户设置
 			async getUserSetting() {
