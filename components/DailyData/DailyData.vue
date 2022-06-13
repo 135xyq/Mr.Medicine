@@ -5,7 +5,7 @@
 		</view>
 		<view class="hidden-content" @click="open" v-if="!hiddenDetail" :class="{'hidden-show':!hiddenDetail}">
 			<view class="text">
-				{{nearText}} 
+				{{nearText}}
 			</view>
 			<view class="time">
 				{{Math.floor(nearTime / 60)}} 小时{{nearTime % 60}} 分钟
@@ -34,7 +34,22 @@
 							v-if="currentIndex ===data.pearRecord.length - 1">完成吃药</button>
 					</view>
 				</swiper-item>
-				<swiper-item  @touchmove.stop>qw3eqw</swiper-item>
+				<swiper-item @touchmove.stop>
+					<view class="show-title">
+						剩余药品展示
+					</view>
+					<ul class="show-conatainer">
+						<li v-for="(item,index) in data.pearRecord" :key="item.pearId" class="show-item">
+							<text class="drug-show-name" :class="{'litter-number':drugLfetNumber[index] <= item.drugPearCount.count}">{{item.drugName}}</text>
+							<text class="drug-show-count" :class="{'litter-number':drugLfetNumber[index] <= item.drugPearCount.count}">{{drugShow[index]}}</text>
+						</li>
+					</ul>
+					<view class="close-show">
+						<button type="primary" size="mini" @click="onHandleChangePrevious" class="close-show-return">返回</button>
+						<button type="primary" size="mini" @click="onHandleClose">确定</button>
+					</view>
+					
+				</swiper-item>
 			</swiper>
 		</uni-popup>
 	</view>
@@ -42,7 +57,10 @@
 
 <script>
 	import getAllMinutes from "@/utils/getMinutes.js";
-	import computerLeftoverDrug from"@/utils/computerLftoverDrugs.js"
+	import {
+		computerLeftoverDrug,
+		formateDrug
+	} from "@/utils/computerLftoverDrugs.js";
 	export default {
 		name: "DailyData",
 		props: ["data"],
@@ -57,6 +75,8 @@
 				nearTime: 0, //距离最近吃药时间最近的分钟数
 				nearText: "", //距离最近日期的提示词
 				hiddenDetail: true, //是否隐藏倒计时详细信息
+				drugLfetNumber: [], //剩余药品个数
+				drugShow:[],//展示剩余
 			};
 		},
 		computed: {
@@ -72,6 +92,10 @@
 			setInterval(() => {
 				this.getTimeAndTransform();
 			}, 1000 * 60)
+
+			this.getAllLeftoverDrugNumber()
+
+			// console.log(this.drugLfetNumber)
 		},
 		methods: {
 			open() {
@@ -149,6 +173,17 @@
 				}
 				// console.log(this.nearTime)
 			},
+			// 获取所有药品剩余
+			getAllLeftoverDrugNumber() {
+				for (let i = 0; i < this.data.pearRecord.length; i++) {
+					this.drugLfetNumber.push(computerLeftoverDrug(this.data.pearRecord[i])); //得到剩余的药品数量
+					this.drugShow.push(formateDrug(this.data.pearRecord[i], computerLeftoverDrug(this.data.pearRecord[i])))
+				}
+			},
+			// 关闭预览
+			onHandleClose(){
+				this.$refs.popup.close(); //吃药完成关闭
+			}
 		}
 	}
 </script>

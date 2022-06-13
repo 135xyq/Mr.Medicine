@@ -27,7 +27,46 @@
 	.hidden-show{
 		padding-left: 10px;
 	}
+	.show-title{
+		text-align: center;
+		margin-top: 10px;
+		font-weight: bold;
+		font-size: 18px;
+	}
 	
+	.close-show{
+		margin-top: 20px;
+		// text-align: right;
+		// margin-right: 30px;
+		.close-show-return{
+			background-color: #007AFF;
+			margin-right: 20px;
+		}
+	}
+	
+	.show-conatainer{
+		margin: 10px 0;
+		.show-item{
+			height: 30px;
+			line-height: 30px;
+			margin: 0 20px;
+			&::after{
+				content: "";
+				display: block;
+				clear: both;
+			}
+		}
+		.drug-show-name{
+			float: left;
+		}
+		.drug-show-count{
+			float: right;
+		}
+		
+		.litter-number{
+			color: red;
+		}
+	}
 
 	.fab-container{
 		width: 60px;
