@@ -7,7 +7,7 @@
 					<view class=" has-current-record" v-if="currentRecord.length > 0">
 						<view class="word-btn-white">药品种类：{{currentRecord[0].pearRecord.length}}种</view>
 						<view class="other-record">
-							剩下的药品还能吃:12天
+							剩下的药品还能吃:{{minDay}} 次
 						</view>
 					</view>
 					<view class="no-current-record" v-if="currentRecord.length === 0">
@@ -77,7 +77,11 @@
 	import RecordTemplate from "@/components/RecordTemplate/RecordTemplate.vue";
 	import ShowRecord from "@/components/ShowRecord/ShowRecord.vue";
 	import RecordInfo from "@/components/RecordInfo/RecordInfo.vue";
-	import DailyData from "@/components/DailyData/DailyData.vue"
+	import DailyData from "@/components/DailyData/DailyData.vue";
+	import {
+		computerLeftoverDrug,
+		formateDrug
+	} from "@/utils/computerLftoverDrugs.js";
 	export default {
 		components: {
 			RecordCard,
@@ -92,18 +96,19 @@
 				// tempRecord: {},
 				templateRecord: [], //模板记录
 				recordInfo: {}, //记录的基本信息
+				minDay:0,//最多还能吃多少次
 			}
 		},
-		onLoad(){
-			if(!this.$store.state.userInfo.userInfo){
+		onLoad() {
+			if (!this.$store.state.userInfo.userInfo) {
 				// 没有登录
 				uni.showToast({
-					title:"请登录",
-					icon:"none"
+					title: "请登录",
+					icon: "none"
 				})
-				
+
 				uni.switchTab({
-					url:"/pages/self/self"
+					url: "/pages/self/self"
 				})
 			}
 		},
@@ -115,6 +120,7 @@
 		async onPullDownRefresh() {
 			await this.getCurrentRecord();
 			await this.getTemplateRecord();
+			this.getEatMinDayDrug();//获取最多吃多少天
 			setTimeout(() => {
 				uni.stopPullDownRefresh();
 				uni.showToast({
@@ -122,6 +128,7 @@
 					icon: "none"
 				});
 			}, 1000)
+					
 		},
 		// watch: {
 		// 	currentRecord: function(newData, oldData) {
@@ -133,12 +140,13 @@
 			// console.log(this.$store.state.userInfo.userInfo.openid)
 			// console.log(this.$refs.test1.getRecordCardData())
 			uni.showLoading({
-				title:"正在获取数据"
+				title: "正在获取数据"
 			})
 			await this.getCurrentRecord();
 			await this.getTemplateRecord();
 			uni.hideLoading();
-			console.log(this.currentRecord)
+			// console.log(this.currentRecord)
+			this.getEatMinDayDrug()
 		},
 		methods: {
 			// 获取模板信息
@@ -277,10 +285,10 @@
 									})
 									return;
 								}
-								if(temp.drugAllCount.pearUnit !== temp.drugPearCount.unit){
+								if (temp.drugAllCount.pearUnit !== temp.drugPearCount.unit) {
 									uni.showToast({
-										title:"药品单位有误",
-										icon:"error"
+										title: "药品单位有误",
+										icon: "error"
 									})
 									return;
 								}
@@ -328,9 +336,9 @@
 					drugAvatar: "",
 					drugPearCount: {
 						count: "",
-						unit: "",	
+						unit: "",
 					},
-					successEat:0,
+					successEat: 0,
 					drugAllCount: {
 						count: "",
 						unit: "",
@@ -410,6 +418,17 @@
 				// 重新获取数据
 				await this.getCurrentRecord();
 				await this.getTemplateRecord();
+			},
+			// 获取能吃最少天数的药品
+			getEatMinDayDrug() {
+				let temp = []
+				// console.log(this.currentRecord)
+				for (let i = 0; i < this.currentRecord[0].pearRecord.length; i++) {
+					temp.push(Math.floor(computerLeftoverDrug(this.currentRecord[0].pearRecord[i]) / this
+						.currentRecord[0].pearRecord[i].drugPearCount.count)); //得到剩余的药品数量
+				}
+				this.minDay = Math.min(...temp);
+				// console.log(temp)
 			}
 		}
 	}
