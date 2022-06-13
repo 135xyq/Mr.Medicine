@@ -82,6 +82,7 @@
 								title: "取消应用",
 								icon: "none"
 							})
+							this.$refs.showDrawer.close()
 						}
 					}
 				})
@@ -96,7 +97,7 @@
 			},
 			// 修改模板
 			onHandleEdit() {
-				uni.showToast({
+				uni.showMode({
 					title: "功能待完善",
 					icon: "none"
 				})
