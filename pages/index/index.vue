@@ -277,6 +277,13 @@
 									})
 									return;
 								}
+								if(temp.drugAllCount.pearUnit !== temp.drugPearCount.unit){
+									uni.showToast({
+										title:"药品单位有误",
+										icon:"error"
+									})
+									return;
+								}
 								this.currentRecord[0].pearRecord[i] = temp;
 							}
 							// 修改数据库

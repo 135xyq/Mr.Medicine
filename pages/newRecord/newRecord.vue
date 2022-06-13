@@ -159,6 +159,14 @@
 						this.flag = false;
 						return;
 					}
+					if(temp.drugAllCount.pearUnit !== temp.drugPearCount.unit){
+						uni.showToast({
+							title:"药品单位选择有误",
+							icon:"none"
+						})
+						this.flag = false;
+						return;
+					}
 					this.data.pearRecord[i] = temp;
 				}
 			},
