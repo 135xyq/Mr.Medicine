@@ -12,7 +12,7 @@
 				>
 					<navigator
 					class="url-to"
-						:url="'/pages/drug_user_info/drug_user_info?url=' + item.url +'&isImg=' +item.isImg + '&name='+item.name">
+						:url="'/pages/drug_user_info/drug_user_info?data=' + JSON.stringify(item)">
 						{{index+1}} . {{item.name}}
 					</navigator>
 				</li>
@@ -49,7 +49,6 @@
 							// console.log("no")
 						} else {
 							this.searchList = getSearchDataArray(res.data);
-							// console.log(this.searchList)
 						}
 					}
 				})
