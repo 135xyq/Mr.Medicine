@@ -9,17 +9,18 @@ export default function getSearchDataArray(str){
 	
 	const reg = /["'].*?["']/;
 	for(let i = 0 ; i < temp.length;i++){
-		// console.log(temp[i].match(reg))
-		let tempUrl = temp[i].match(reg)[0].replaceAll("'",'');
-		tempUrl = temp[i].match(reg)[0].replaceAll('"','');
+		let tempUrl = temp[i].match(reg)[0];
+		// console.log(tempUrl)
 		let obj = {
-			url:"https://www.yaopinnet.com/" +tempUrl,
+			url:tempUrl,
 			name:temp[i].split('>')[1],
 			isImg:false
 		}
-		if(tempUrl.includes('.jpg')){
+		if(!tempUrl.includes('.htm')){
 			// 是图片
-			obj.url = "https://www.yaopinnet.com/tools/" +tempUrl;
+			let temp = tempUrl.split("?id=")[1];
+			// console.log(temp.substring(temp.length-1))
+			obj.url = temp.substring(0,temp.length-1);
 			obj.isImg = true;
 		}
 
