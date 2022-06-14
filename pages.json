@@ -71,7 +71,16 @@
 			}
 
 		}
-	],
+	    ,{
+            "path" : "pages/drugInfoSearch/drugInfoSearch",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "搜索详情",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",

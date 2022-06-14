@@ -1,8 +1,11 @@
 <template>
-	<view>
-		<template>
+	<view class="read-info-container">
+		<view class="search-container">
+			<uni-search-bar :radius="100" placeholder="请输入药品名称" @confirm="onHandleSearchConfirm"></uni-search-bar>
+		</view>
+		<view clsss="read-list">
 			<uni-indexed-list :options="data" />
-		</template>
+		</view>
 	</view>
 </template>
 
@@ -25,10 +28,21 @@
 			this.data = res.result.data[0].data;
 			uni.hideLoading()
 			
+		},
+		methods:{
+			// 输入完成
+			onHandleSearchConfirm(e){
+				uni.navigateTo({
+					url:"/pages/drugInfoSearch/drugInfoSearch?k=" + e.value,
+				})
+
+				
+				
+			}
 		}
 	}
 </script>
 
-<style lang="less">
-
+<style lang="less" scoped>
+@import "./readInfo.less";
 </style>
