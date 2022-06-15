@@ -80,6 +80,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/leftDrugs/leftDrugs",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "药品剩余量",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

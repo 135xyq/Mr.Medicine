@@ -36,6 +36,14 @@
 					<uni-icons type="forward" color="#939188" size="20" class="load-to-page"></uni-icons>
 					
 				</view>
+				<!-- 剩余药品-->
+				<view class="chat item" @click="onHandleToLeft">
+					<uni-icons  type="map" size="25"></uni-icons>
+					<!-- <uni-icons type="gear" size="25"></uni-icons> -->
+					<view class="select-item chat-item">剩余药品</view>
+					<uni-icons type="forward" color="#939188" size="20" class="load-to-page"></uni-icons>
+					
+				</view>
 				<!-- 设置 -->
 				<view class="set item" @click="onHandleToSet">
 					<uni-icons type="gear" size="25"></uni-icons>
@@ -194,6 +202,12 @@
 			onHandleToSet(){
 				uni.navigateTo({
 					url: '/pages/setting/setting',
+				})
+			},
+			// 跳转到剩余药品数量
+			onHandleToLeft(){
+				uni.navigateTo({
+					url: '/pages/leftDrugs/leftDrugs',
 				})
 			}
 		}
