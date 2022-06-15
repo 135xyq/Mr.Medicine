@@ -65,7 +65,11 @@
             "urlCheck" : false
         },
         "usingComponents" : true,
-        "permission" : {}
+        "permission" : {
+            "scope.userLocation" : {
+                "desc" : "方便查找附近医院和药店位置"
+            }
+        }
     },
     "mp-alipay" : {
         "usingComponents" : true
