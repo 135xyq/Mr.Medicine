@@ -1,6 +1,13 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
+			"path": "pages/self/self",
+			"style": {
+				"navigationBarTitleText": "个人中心",
+				"enablePullDownRefresh": false
+			}
+		
+		},{
 			"path": "pages/map/map",
 			"style": {
 				"navigationBarTitleText": "附近地图",
@@ -11,13 +18,6 @@
 			"path": "pages/readInfo/readInfo",
 			"style": {
 				"navigationBarTitleText": "药品说明书",
-				"enablePullDownRefresh": false
-			}
-
-		}, {
-			"path": "pages/self/self",
-			"style": {
-				"navigationBarTitleText": "个人中心",
 				"enablePullDownRefresh": false
 			}
 

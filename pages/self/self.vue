@@ -128,6 +128,23 @@
 												.state.userInfo.userInfo.avatarUrl;
 											this.userInfo.openid = this.$store
 												.state.userInfo.userInfo.openid;
+											// 直接转去设置
+											uni.showModal({
+												title:"提示",
+												content:"请完成基本设置",
+												success: (res) => {
+													if(res.confirm){
+														uni.navigateTo({
+															url:"/pages/setting/setting"
+														})
+													}else if(res.cancel){
+														uni.showToast({
+															title:"请完成个人设置",
+															icon:"error"
+														})
+													}
+												}
+											})
 										}
 									})
 									this.avatar = res.rawData.avatarUrl; //登录成功给出新的头像

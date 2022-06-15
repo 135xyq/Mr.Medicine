@@ -1,5 +1,5 @@
 {
-    "name" : "MrMedicine",
+    "name" : "药先生助手",
     "appid" : "__UNI__00B53C6",
     "description" : "",
     "versionName" : "1.0.0",
@@ -62,7 +62,9 @@
     "mp-weixin" : {
         "appid" : "wxf600daae2dc114e6",
         "setting" : {
-            "urlCheck" : false
+            "urlCheck" : true,
+            "es6" : true,
+            "minified" : true
         },
         "usingComponents" : true,
         "permission" : {
