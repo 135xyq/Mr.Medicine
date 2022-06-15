@@ -1,5 +1,8 @@
 <template>
 	<view class="content">
+		<view class="" v-if="minDay < 3 && currentRecord.length > 0">
+			<uni-notice-bar scrollable single :text="'剩余的药品还能吃 '+ minDay +' 次,请及时补充!'"></uni-notice-bar>
+		</view>
 		<view class="current-record">
 			<view class="example-body">
 				<uni-card :is-shadow=true @click="showRecordDetailDrawer" class="card-title" title="今日吃药"
@@ -429,7 +432,7 @@
 				}
 				this.minDay = Math.min(...temp);
 				// console.log(temp)
-			}
+			},
 		}
 	}
 </script>
