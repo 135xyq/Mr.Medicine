@@ -31,8 +31,8 @@
 			};
 		},
 		async created() {
-			// await this.getCurrentRecord();
-			// this.getAllLeftoverDrugNumber();
+			await this.getCurrentRecord();
+			this.getAllLeftoverDrugNumber();
 
 			// console.log(this.data)
 			// console.log(this.drugShow)
