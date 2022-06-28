@@ -21,21 +21,17 @@
 		},
 		data() {
 			return {
+				templateInfo:{}
 			};
 		},
-		computed:{
-			templateInfo(){
-				return{
-					name:this.data.name,
-					avatar:this.data.avatar,
-					createDate:this.data.createDate,
-					description:this.data.description
-				}
+		watch:{
+			"data":function(newData,oldData){
+				this.templateInfo.name=newData.name,
+				this.templateInfo.avatar=newData.avatar,
+				this.templateInfo.createDate=newData.createDate,
+				this.templateInfo.description=newData.description
 			}
 		}
-		// created() {
-		// 	console.log(this.data)
-		// }
 	}
 </script>
 

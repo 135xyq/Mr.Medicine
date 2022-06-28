@@ -122,6 +122,7 @@
 		// 下拉获取信息
 		async onPullDownRefresh() {
 			await this.getCurrentRecord();
+			console.log(this.currentRecord)
 			await this.getTemplateRecord();
 			this.getEatMinDayDrug();//获取最多吃多少天
 			setTimeout(() => {
@@ -190,6 +191,8 @@
 					this.recordInfo.avatar = this.currentRecord[0].avatar;
 					this.recordInfo.createDate = this.currentRecord[0].createDate;
 					this.recordInfo.description = this.currentRecord[0].description;
+				}else{
+					this.currentRecord=[];
 				}
 			},
 			// 取消或者结束预览
@@ -200,6 +203,7 @@
 			},
 			// 结束当前的记录
 			onHandleEndModification() {
+				console.log(111)
 				uni.showModal({
 					title: "提示",
 					content: "确定要结束当前的记录？",
@@ -409,7 +413,7 @@
 			// 删除一个模板
 			async onHandleDeleteTemplate(id) {
 				const res = await uniCloud.callFunction({
-					name: "delete_record",
+					name: "delete_template",
 					data: {
 						id,
 					}

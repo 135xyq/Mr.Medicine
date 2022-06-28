@@ -14,11 +14,11 @@
 	export default {
 		data() {
 			return {
-				data: {}, //历史记录的详细数据			
+				data: {}, //历史记录的详细数据	
 			};
 		},
-		onLoad(data) {
-			this.getHsitoryDetail(data.id);
+		async onLoad(data) {
+			await this.getHsitoryDetail(data.id);
 		},
 		methods: {
 			async getHsitoryDetail(id) {

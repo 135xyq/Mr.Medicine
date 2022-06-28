@@ -95,23 +95,26 @@
 		},
 		created() {
 			// 初始化每日剂量
-			this.drugPearCount.count = this.parentData.pearCount ? this.parentData.pearCount.count : this
+			// console.log(this.parentData)
+			this.drugPearCount.count = this.parentData.drugPearCount ? this.parentData.drugPearCount.count : this
 				.drugPearCountRange[0][this.drugPearCountIndex1];
-			this.drugPearCount.unit = this.parentData.pearCount ? this.parentData.pearCount.unit : this.drugPearCountRange[
+			this.drugPearCount.unit = this.parentData.drugPearCount ? this.parentData.drugPearCount.unit : this.drugPearCountRange[
 				1][this.drugPearCountIndex2];
 			// 初始化总数
-			this.drugAllCount.count = this.parentData.allCount ? this.parentData.allCount.count : this.drugAllCountRange[0]
+			this.drugAllCount.count = this.parentData.drugAllCount ? this.parentData.drugAllCount.count : this.drugAllCountRange[0]
 				[this.drugAllCountIndex1];
-			this.drugAllCount.unit = this.parentData.allCount ? this.parentData.allCount.unit : this.drugAllCountRange[1][
+			this.drugAllCount.unit = this.parentData.drugAllCount ? this.parentData.drugAllCount.unit : this.drugAllCountRange[1][
 				this.drugAllCountIndex2
 			];
-			this.drugAllCount.pearCount = this.parentData.allCount ? this.parentData.allCount.pearCount : this
+			this.drugAllCount.pearCount = this.parentData.drugAllCount ? this.parentData.drugAllCount.pearCount : this
 				.drugAllCountRange[2][this.drugAllCountIndex3];
-			this.drugAllCount.pearUnit = this.parentData.allCount ? this.parentData.allCount.pearUnit : this
+			this.drugAllCount.pearUnit = this.parentData.drugAllCount ? this.parentData.drugAllCount.pearUnit : this
 				.drugAllCountRange[3][this.drugAllCountIndex4];
 			// 一天吃几次
 			this.drugDayEatCount = this.parentData.drugDayEatCount || this.drugDayEatRange[this.drugDayEatIndex];
 			this.drugDayEatIndex = this.drugDayEatCount;
+			// console.log(this.parentData.drugPearCount,this.parentData.drugAllCount)
+			// console.log(this.drugPearCount,this.drugAllCount)
 		},
 		methods: {
 			// 修改药品剂量
