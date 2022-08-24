@@ -179,23 +179,13 @@
 						}
 					}
 				})
-				
-				// const res = await uniCloud.callFunction({
-				// 	name: 'getOpenId',
-				// 	data: {
-				// 		code,
-				// 	}
-				// });
-				// console.log(res)
-				const temp = "1dd92382dbe76240929007795b89005e";
-				const temp1 = "wxf600daae2dc114e6"
 				uni.request({
-					url: `https://api.weixin.qq.com/sns/jscode2session?appid=${temp1}&secret=${temp}&js_code=${code}&grant_type=authorization_code`,
+					url: `https://api.weixin.qq.com/sns/jscode2session?appid=wxf600daae2dc114e6&secret=1dd92382dbe76240929007795b89005e&js_code=${code}&grant_type=authorization_code`,
 					method: "GET"
 				}).then(res => {
 					this.openId = res[1].data.openid
 				})
-			}, 
+			},
 			// 跳转到历史记录
 			onHandleToHistory() {
 				uni.navigateTo({
